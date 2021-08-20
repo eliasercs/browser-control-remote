@@ -1,0 +1,16 @@
+[
+    {
+        "id":"01",
+        "titulo":"mov1",
+        "director":"jp",
+        "año":"1990",
+        "clasificación":"10"
+    },
+    {
+        "id":"02",
+        "titulo":"mov2",
+        "director":"jj",
+        "año":"1992",
+        "clasificación":"9.9"
+    }
+]

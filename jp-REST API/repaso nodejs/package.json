@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-curso",
+  "version": "1.0.0",
+  "description": "repaso nodejs",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "repaso",
+    "taller integracion 3"
+  ],
+  "author": "Jean p",
+  "license": "ISC"
+}
