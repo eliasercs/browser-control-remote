@@ -68,6 +68,8 @@
             <div class="row justify-content-end">
                 <div class="col-md-4 offset-1">
                     <p>info</p>
+                    <div class="infoState"></div>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="info" cmd="info" par="">Info</button>
                 </div>
 
             </div>
@@ -78,16 +80,16 @@
         <div class="container p-3">
             <div class="row justify-content-around">
                 <div class="col-md-2 offset-1">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="first" data-par="" type="submit">First</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="first" cmd="first" par="">First</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="prev" data-par="" type="submit">Prev</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="prev" cmd="prev" par="">Prev</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="next" data-par="" type="submit">Next</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="next" cmd="next" par="">Next</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="last" data-par="" type="submit">Last</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="last" cmd="last" par="">Last</button>
                 </div>
 
             </div>
@@ -97,10 +99,10 @@
         <div class="container p-3">
             <div class="row justify-content-around">
                 <div class="col-md-3 offset-1">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="play" data-par="" type="submit">Play</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="play" cmd="play" par="">Play</button>    
                 </div>
                 <div class="col-md-3 offset-1">
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="stop" data-par="" type="submit">Stop</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="stop" cmd="stop" par="">Stop</button>
                 </div>
 
             </div>
@@ -114,7 +116,9 @@
         </div>
     </section>
 
+    <script src="js/info.js"></script>
     <script src="./js/terminate.js"></script>
+    <script src="./js/playBack.js"></script>
 
     <script>
         const show_value = document.querySelector("#value")
