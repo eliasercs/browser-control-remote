@@ -1,0 +1,25 @@
+body {
+    background-color: #073B4C;
+    color: #fff;
+}
+
+#navBar {
+    background-color: #06D6A0;
+}
+
+#navBar a { 
+    color: #fff;
+}
+
+#terminate {
+    background-color: #FFD166;
+    color: #fff;
+}
+
+#seek_norm {
+    width: 100%;
+}
+
+.deviceButton {
+    width: 100%;
+}
