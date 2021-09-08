@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+	<script src="jquery/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 <style>
@@ -28,6 +29,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <p>Device Modes</p>
+                    <button type="submit">Setup</button>
+                    <button type="submit">Record</button>
+                    <button type="submit">Playback</button>
                 </div>
                 <div class="col-md-8">
                     <p>Pantalla de informacion de estado</p>
@@ -45,12 +49,35 @@
             <div class="row">
                 <div class="col-md-4">
                     <p>PlayBack</p>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="first"	data-par=""		type="submit">First</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="prev"	data-par="10"	type="submit">Prev</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="next"	data-par="10"	type="submit">Next</button>
                 </div>
 
             </div>
         </div>
     </section>
 
+	<script>
+		$('.pcmd').on('click',function(e){
+
+fetch(e.target.dataset.target, {
+
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify({ cmd: e.target.dataset.cmd, par: e.target.dataset.par }),
+	
+})
+.then(response => response.json())
+.then(data => {console.log('Success:', data);
+})
+.catch((error) => {console.error('Error:', error);
+});
+
+});
+	</script>
 </body>
 
 </html>
