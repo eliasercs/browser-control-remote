@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-	<script src="jquery/jquery-3.6.0.min.js"></script>
     <title>Document</title>
 </head>
 <style>
@@ -17,118 +16,105 @@
     <header>
         <div class="container-lg">
             <nav class="navbar navbar-light bg-light">
-                <img src="./assets/spica-logo.png" class="rounded" alt="...">
+                <img src="./assets/spica-logo.png" class="image-fluid" alt="..." width="200" height="100">
                 <a class="navbar-brand">browser remote control </a>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Terminal</button>
 
             </nav>
         </div>
     </header>
+    <br>
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row justify-content-start">
+                <div class="col-md-4 offset-1">
                     <p>Device Modes</p>
-                    <button type="submit">Setup</button>
-                    <button type="submit">Record</button>
-                    <button type="submit">Playback</button>
                 </div>
-                <div class="col-md-8">
-                    <p>Pantalla de informacion de estado</p>
-                    <div class="infoState"></div>
-                </div>
+
+
+               
             </div>
         </div>
 
     </section>
-
-
-
+    <br>
     <section>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <p>PlayBack</p>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="first"	data-par=""		type="submit">First</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="prev"	data-par="10"	type="submit">Prev</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="next"	data-par="10"	type="submit">Next</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="play"   data-par=""     type="submit">Play</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="stop"   data-par=""     type="submit">Stop</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="last"   data-par=""     type="submit">Last</button>
+            <div class="row justify-content-start">
+                <div class="col-md-4 offset-1">
+                    <p>Setup</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <button id="info" cmd="info" par="">Info</button>
+     <section>
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-md-4 offset-1">
+                    <p>Record</p>
+                </div>
 
-    <!-- Get status information -->
-    <script src="js/info.js"></script>
+            </div>
+        </div>
+    </section>
 
-	<script>
-		$('.pcmd').on('click',function(e){
+     <section>
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-md-4 offset-1">
+                    <p>PlayBack</p>
+                </div>
 
-fetch(e.target.dataset.target, {
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-4 offset-1">
+                    <p>info</p>
+                </div>
 
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json',
-	},
-	body: JSON.stringify({ cmd: e.target.dataset.cmd, par: e.target.dataset.par }),
-	
-})
-.then(response => response.json())
-.then(data => {console.log('Success:', data);
-})
-.catch((error) => {console.error('Error:', error);
-});
+            </div>
+        </div>
+    </section>
+    <br>
+    <section>
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-md-2 offset-1">
+                    <p>info</p>
+                </div>
+                                <div class="col-md-2">
+                    <p>info</p>
+                </div>
+                                <div class="col-md-2">
+                    <p>info</p>
+                </div>
+                                <div class="col-md-2">
+                    <p>info</p>
+                </div>
 
-});
-	</script>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-md-3 offset-1">
+                    <p>info</p>
+                </div>
+                <div class="col-md-3 offset-1">
+                    <p>info</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
 </body>
-
-<script>
-
-    $('.pcmd').on('click',function(e){
-    
-        fetch(e.target.dataset.target, {
-    
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ cmd: e.target.dataset.cmd, par: e.target.dataset.par }),
-            
-        })
-        .then(response => response.json())
-        .then(data => {console.log('Success:', data);
-        })
-        .catch((error) => {console.error('Error:', error);
-        });
-    
-    });
-    
-    $('#seek_norm').on('change',function(e){
-    
-        fetch('system/station1/dhs1/playback', {
-            
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ cmd: "seek_norm", par: e.target.value/1000.0 }),
-            
-        })
-        .then(response => response.json())
-        .then(data => {console.log('Success:', data);
-        })
-        .catch((error) => {console.error('Error:', error);
-        });
-    
-    });
-    
-    
-    </script>
 
 </html>
