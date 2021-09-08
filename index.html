@@ -52,6 +52,9 @@
                     <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="first"	data-par=""		type="submit">First</button>
                     <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="prev"	data-par="10"	type="submit">Prev</button>
                     <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="next"	data-par="10"	type="submit">Next</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="play"   data-par=""     type="submit">Play</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="stop"   data-par=""     type="submit">Stop</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0 pcmd" data-target="system/station1/dhs1/playback" data-cmd="last"   data-par=""     type="submit">Last</button>
                 </div>
 
             </div>
@@ -79,5 +82,48 @@ fetch(e.target.dataset.target, {
 });
 	</script>
 </body>
+
+<script>
+
+    $('.pcmd').on('click',function(e){
+    
+        fetch(e.target.dataset.target, {
+    
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cmd: e.target.dataset.cmd, par: e.target.dataset.par }),
+            
+        })
+        .then(response => response.json())
+        .then(data => {console.log('Success:', data);
+        })
+        .catch((error) => {console.error('Error:', error);
+        });
+    
+    });
+    
+    $('#seek_norm').on('change',function(e){
+    
+        fetch('system/station1/dhs1/playback', {
+            
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cmd: "seek_norm", par: e.target.value/1000.0 }),
+            
+        })
+        .then(response => response.json())
+        .then(data => {console.log('Success:', data);
+        })
+        .catch((error) => {console.error('Error:', error);
+        });
+    
+    });
+    
+    
+    </script>
 
 </html>
