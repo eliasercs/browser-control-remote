@@ -21,15 +21,82 @@ infoButton.addEventListener("click", () => {
 
             const { status, mode, time, fri, frt, frc } = data
             if (data.mode == 'playback') {
-                infostate.innerHTML = `Status: ${status}
-                ,Mode: ${mode},
-                Time: ${time},
-                Frame index: ${fri},
-                Frame Time: ${frt},
-                Frame count: ${frc}`
+                infostate.innerHTML =`
+        <table class="table table table-hover table-light" border:"1">
+        <thead>          
+        </thead>
+        <tbody>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Status</td>
+            <td>${status}</td>
+            
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Mode</td>
+            <td>${mode}</td>
+            
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Time</td>
+            <td>${time}</td>
+           
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Frame Index</td>
+            <td>${fri}</td>
+           
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Frame Time</td>
+            <td>${frt}</td>
+           
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Frame Count</td>
+            <td>${frc}</td>
+           
+          </tr>
+        </tbody>
+      </table>`
             } else {
 
-                infostate.innerHTML = `Status: ${status},Mode: ${mode},Time: ${time}`
+        
+
+
+
+
+
+
+        infostate.innerHTML =`<table class="table table table-hover table-light" border:"1">
+        <thead>          
+        </thead>
+        <tbody>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Status</td>
+            <td>${status}</td>
+            
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Mode</td>
+            <td>${mode}</td>
+            
+          </tr>
+          <tr class="table-success">
+            <th scope="row"></th>
+            <td>Time</td>
+            <td>${time}</td>
+           
+          </tr>
+        </tbody>
+      </table>`
             }
         })
-})
+  })
