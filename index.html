@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <title>Document</title>
+    <title>SPICAtek / Remote Control</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <style>
@@ -22,47 +23,32 @@
         </nav>
     </header>
     <br>
-    <section>
-        <div class="container">
-            <div class="row justify-content-start">
-                <div class="col-md-4 offset-1">
-                    <p>Device Modes</p>
-                </div>
-            </div>
-        </div>
-
-    </section>
 
     <section>
         <div class="container p-2 text-center">
             <div class="row justify-content-start">
                 <div class="col-md-4 offset-1">
-                    <button class="btn-device deviceButton" data-target="system/station1/dhs1" data-cmd="mode" data-par="setup">Setup</button>
+                    <p class="text-center">Device Modes</p>
+                    <button class="btn-device deviceButton" id="setup" cmd="mode" par="setup">Setup</button>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section>
         <div class="container p-2 text-center">
             <div class="row justify-content-start">
                 <div class="col-md-4 offset-1">
-                    <button class="btn-device deviceButton" data-target="system/station1/dhs1" data-cmd="mode" data-par="record">Record</button>
+                    <button class="btn-device deviceButton" id="record" cmd="mode" par="record">Record</button>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section>
         <div class="container p-2 text-center">
             <div class="row justify-content-start">
                 <div class="col-md-4 offset-1">
-                    <button class="btn-device deviceButton" data-target="system/station1/dhs1" data-cmd="mode" data-par="playback">Playback</button>
+                    <button class="btn-device deviceButton" id="playback" cmd="mode" par="playback">Playback</button>
                 </div>
-
             </div>
         </div>
     </section>
+
     <section>
         <div class="container">
             <div class="row justify-content-end">
@@ -84,7 +70,7 @@
     <br>
     <section>
         <div class="container p-3">
-            <p>PlayBack</p>
+            <p class="text-center">PlayBack</p>
             <div class="row justify-content-around">
                 <div class="col-md-2 offset-1">
                     <button class="btn-playback" id="first" cmd="first" par="">First</button>
@@ -111,7 +97,6 @@
                 <div class="col-md-3 offset-1">
                     <button class="btn-playback" id="stop" cmd="stop" par="">Stop</button>
                 </div>
-
             </div>
             <div class="row p-4">
                 <div class="col-md-12 text-center">
@@ -123,18 +108,10 @@
         </div>
     </section>
 
-    <script src="js/info.js"></script>
+    <script src="./js/info.js"></script>
     <script src="./js/terminate.js"></script>
+    <script src="./js/devicemodes.js"></script>
     <script src="./js/playBack.js"></script>
-
-    <script>
-        const show_value = document.querySelector("#value")
-        const seek_norm = document.querySelector("#seek_norm")
-
-        show_value.innerHTML = seek_norm.value
-
-        seek_norm.addEventListener("change", () => show_value.innerHTML = seek_norm.value)
-    </script>
 
 </body>
 
