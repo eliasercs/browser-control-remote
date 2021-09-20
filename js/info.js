@@ -1,5 +1,4 @@
 const infoButton = document.querySelector("#info")
-    //const infoStateDiv = document.querySelector(".infoState")
 const infostate = document.querySelector("#infostate")
 
 infoButton.addEventListener("click", () => {
@@ -15,11 +14,8 @@ infoButton.addEventListener("click", () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data.mode)
-            console.log(cmd)
-
-
             const { status, mode, time, fri, frt, frc } = data
+            console.log({"status":status})
             if (data.mode == 'playback') {
                 infostate.innerHTML =`
         <table class="table table table-hover table-light" border:"1">
@@ -65,14 +61,6 @@ infoButton.addEventListener("click", () => {
         </tbody>
       </table>`
             } else {
-
-        
-
-
-
-
-
-
         infostate.innerHTML =`<table class="table table table-hover table-light" border:"1">
         <thead>          
         </thead>

@@ -16,7 +16,7 @@ body {
     color: #fff;
 }
 
-#seek_norm {
+#seek_norm, #frame_index, #frame_time {
     width: 100%;
 }
 

@@ -1,5 +1,6 @@
-//playBack
-
+/**
+ * The following lines capture the buttons for the playback mode.
+ */
 const play_Button = document.querySelector("#play")
 const stop_Button = document.querySelector("#stop")
 const prev_Button = document.querySelector("#prev")
@@ -11,6 +12,9 @@ const seek_norm_input = document.querySelector("#seek_norm")
 const show_value_seek_norm = document.querySelector("#value")
 show_value_seek_norm.innerHTML = seek_norm.value
 
+/**
+ * For each button, when the user clicks, the value of the respective attributes is obtained and the fetch_device method is executed
+ */
 play_Button.addEventListener("click", () =>{
     var command =play_Button.getAttribute("cmd")
     var par=play_Button.getAttribute("par")
@@ -53,6 +57,11 @@ seek_norm_input.addEventListener("change", () => {
     fetch_seek_norm(value)
 })
 
+/**
+ * This function is responsible for sending the JSON with the respective command for the playback mode.
+ * @param {string} command Receive the following arguments: "play", "stop", "first", "prev", "next", "last"
+ * @param {string} par 
+ */
 async function fetch_playBack(command,par) {
     const response = await fetch("system/station1/dhs1/playback",{
         method: "POST",
@@ -64,6 +73,10 @@ async function fetch_playBack(command,par) {
     console.log({"Ok": response.ok, "Status": response.status, "Message": command+"-"+par})
 }
 
+/**
+ * This function is responsible for sending the JSON with the respective command for the frame manipulation.
+ * @param {Number} value Value captured through input
+ */
 async function fetch_seek_norm(value){
     const response = await fetch("system/station1/dhs1/playback",{
         method: "POST",

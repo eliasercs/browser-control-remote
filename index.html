@@ -88,6 +88,16 @@
                 <input type="range" class="form-range" min="0" max="1000" id="seek_norm">
                 <label for="value" id="value"></label>
             </div>
+            <div class="col-md-12 text-center">
+                <label for="video" class="form-label">Seek to frame by index</label>
+                <input type="range" class="form-range" min="0" max="7500" id="frame_index">
+                <label for="value" id="seek_frame_index"></label>
+            </div>
+            <div class="col-md-12 text-center">
+                <label for="video" class="form-label">Seek to frame by time</label>
+                <input type="range" class="form-range" min="0" max="7500" id="frame_time">
+                <label for="value" id="seek_frame_time"></label>
+            </div>
         </div>
     </div>
 
@@ -95,6 +105,7 @@
     <script src="./js/terminate.js"></script>
     <script src="./js/devicemodes.js"></script>
     <script src="./js/playBack.js"></script>
+    <script src="./js/seek.js"></script>
 
 </body>
 
