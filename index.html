@@ -16,7 +16,7 @@
         <nav class="navbar" id="navBar">
             <img src="./assets/spica-logo.png" class="image-fluid" alt="..." width="200" height="100">
             <a class="navbar-brand" translate="no">Browser Remote Control </a>
-            <button class="btn-terminate my-2 my-sm-0" id="terminate" cmd="terminate">Terminate</button>
+            <button class="btn-terminate my-2 my-sm-0" id="terminate">Terminate</button>
         </nav>
     </header>
     <br />
@@ -76,10 +76,10 @@
     <div class="container p-3">
         <div class="row justify-content-around">
             <div class="col-md-3 offset-1">
-                <button class="btn-playback" id="play" cmd="play" par="">Play</button>
+                <button class="btn-playback" id="play">Play</button>
             </div>
             <div class="col-md-3 offset-1">
-                <button class="btn-playback" id="stop" cmd="stop" par="">Stop</button>
+                <button class="btn-playback" id="stop">Stop</button>
             </div>
         </div>
         <div class="row p-4">
@@ -90,20 +90,22 @@
             </div>
             <div class="col-md-12 text-center">
                 <label for="video" class="form-label">Seek to frame by index</label>
-                <input type="range" class="form-range" min="0" max="7500" id="frame_index">
+                <input type="range" class="form-range" id="frame_index">
                 <label for="value" id="seek_frame_index"></label>
             </div>
             <div class="col-md-12 text-center">
                 <label for="video" class="form-label">Seek to frame by time</label>
-                <input type="range" class="form-range" min="0" max="7500" id="frame_time">
+                <input type="range" class="form-range" id="frame_time">
                 <label for="value" id="seek_frame_time"></label>
             </div>
         </div>
     </div>
 
-    <script src="./js/info.js"></script>
-    <script src="./js/terminate.js"></script>
+    <script src="js/fetch.js"></script>
+    <script src="js/main.js"></script>
+
     <script src="./js/devicemodes.js"></script>
+    <script src="./js/info.js"></script>
     <script src="./js/playBack.js"></script>
     <script src="./js/seek.js"></script>
 
