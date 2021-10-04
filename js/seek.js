@@ -1,27 +1,24 @@
-/**
- * The following lines capture the inputs and label's for the frame manipulation.
- */
-const frame_index_input = document.querySelector("#frame_index")
+const frame_i_input = document.querySelector("#frame_index")
 const frame_index_show = document.querySelector("#seek_frame_index")
-const frame_time_input = document.querySelector("#frame_time")
+const frame_t_input = document.querySelector("#frame_time")
 const frame_time_show = document.querySelector("#seek_frame_time")
 
 /**
  * Set current index value and time (in seconds)
  */
-frame_index_show.innerHTML = frame_index_input.value
-frame_time_show.innerHTML = frame_time_input.value/22000.0
+frame_index_show.innerHTML = frame_i_input.value
+frame_time_show.innerHTML = (frame_t_input.value/22000.0).toFixed(6)
 
 frame_index_input.addEventListener("change", () => {
-    frame_index_show.innerHTML = frame_index_input.value
-    var val = frame_index_input.value
+    frame_index_show.innerHTML = frame_i_input.value
+    var val = frame_i_input.value
     fetch_frame("seek_to_frame",val,"Seek to frame by index")
 })
 
 frame_time_input.addEventListener("change",() =>{
-    var val = frame_time_input.value
-    frame_time_show.innerHTML = val/22000.0
-    fetch_frame("seek_to_time",val/22000.0,"Seek to frame by time")
+    var val = frame_t_input.value
+    frame_time_show.innerHTML = (val/22000.0).toFixed(6)
+    fetch_frame("seek_to_time",(val/22000.0).toFixed(6),"Seek to frame by time")
 })
 
 /**

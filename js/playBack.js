@@ -59,6 +59,15 @@ seek_norm_input.addEventListener("change", () => {
     var value = seek_norm_input.value
     show_value_seek_norm.innerHTML = seek_norm.value
     fetch_seek_norm(value)
+    info()
+    .then(res => res.json())
+    .then(data => {
+        frame_index_input.value = data.fri
+        frame_time_input.value = data.fri
+        document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
+        document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
+    })
+    .catch(err => console.log(err))
 })
 
 /**
@@ -119,10 +128,10 @@ async function move_seek_with_playbakButton(){
             frame_time_input.setAttribute("min",0)
             frame_time_input.setAttribute("max",(frc-1))
             frame_time_input.value = fri
-            document.querySelector("#seek_frame_time").innerHTML = frame_time_input.value/22000.0
+            document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
             frame_time_input.addEventListener("change", async () => {
-                document.querySelector("#seek_frame_time").innerHTML = frame_time_input.value/22000.0
-                seek("seek_to_time",frame_time_input.value/22000.0)
+                document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
+                seek("seek_to_time",(frame_time_input.value/22000.0).toFixed(6))
                 frame_index_input.value = frame_time_input.value
                 document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
             })
