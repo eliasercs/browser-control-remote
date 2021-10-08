@@ -14,6 +14,7 @@ function requestInfo() {
             .then(res => res.json())
             .then(data => {
                 //console.log(data.fri)
+                //console.log(data)
                 frame_index_input.value = data.fri
                 frame_time_input.value = data.fri
                 document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
@@ -39,6 +40,7 @@ fetch("/system/station1/dhs1", {
     .then(res => res.json())
     .then(data => {
         const { mode, frc, fri } = data
+        console.log(data)
         if (mode === "playback") {
             // Seek to frame by index
             frame_index_input.setAttribute("min", 0)

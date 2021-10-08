@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./css/app.css">
 </head>
+
 <body>
     <div class="navigation">
         <ul>
@@ -89,7 +91,18 @@
     </div>
 
     <div class="container">
+        <div class="navBar">
+            <!--Checkbox para manipular los estilos de la aplicación-->
+            <div class="theme element">
+                <input type="checkbox">
+            </div>
 
+            <div class="off element">
+                <button id="terminate">
+                    <ion-icon name="power"></ion-icon>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -98,17 +111,18 @@
     <script>
         list = document.querySelectorAll(".list")
 
-        function activeList(){
+        function activeList() {
             list.forEach(item => {
                 item.classList.remove("active")
                 this.classList.add("active")
             })
         }
 
-        list.forEach(item => item.addEventListener("click",activeList))
-        list.forEach(item => item.addEventListener("mouseover",activeList))
-        list.forEach(item => item.addEventListener("mouseout",()=>item.classList.remove("active")))
+        list.forEach(item => item.addEventListener("click", activeList))
+        list.forEach(item => item.addEventListener("mouseover", activeList))
+        list.forEach(item => item.addEventListener("mouseout", () => item.classList.remove("active")))
     </script>
 
 </body>
+
 </html>
