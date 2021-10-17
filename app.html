@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPICAtek / Remote Control</title>
     <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/app.css">
+    <!--Scripts-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
     <div class="navigation">
         <ul>
-            <p>Device Mode</p>
+            <p id="deviceModeSubtitle" class="hide">Device Mode</p>
             <li class="list">
                 <button>
                     <span class="icon">
@@ -38,7 +42,9 @@
                     <span class="title">Playback</span>
                 </button>
             </li>
-            <p>Playback Buttons</p>
+        </ul>
+        <ul>
+            <p id="playbackSubtitle" class="hide">Playback Buttons</p>
             <li class="list">
                 <button>
                     <span class="icon">
@@ -90,7 +96,7 @@
         </ul>
     </div>
 
-    <div class="container">
+    <div class="body">
         <div class="navBar">
             <!--Checkbox para manipular los estilos de la aplicación-->
             <div class="theme element">
@@ -103,25 +109,60 @@
                 </button>
             </div>
         </div>
+        <div class="content">
+            <div class="container p-3">
+
+                <div class="setStation text-center">
+                    <select id="stations" class="form-control">
+                        <option value="default">Select a station</option>
+                        <option value="1">Hola</option>
+                    </select>
+                    <div class="alert alert-danger" id="alertMessage" role="alert">You must select a station.</div>
+                </div>
+
+                <div class="row interface">
+                    <div class="col text-center">
+                        <img id="frameImage" width="250" height="250"
+                        src="https://scontent.fccp4-1.fna.fbcdn.net/v/t1.6435-9/245809811_1779203315804276_8801075153991481822_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=825194&_nc_ohc=R0ZeyKPd1SoAX8eQpTc&tn=m6EaoJl0wqOjblCI&_nc_ht=scontent.fccp4-1.fna&oh=982d1db2aae5bae0c8459692c903785d&oe=618F1C4B" class="img-fluid" alt="Frame" />
+                    </div>
+                    <div class="col">
+                        <h5 class="card-title text-center text-white">Frame Manipulation</h5>
+                        <div class="range-slider">
+                            <label>Seek to normalize</label>
+                            <div id="normalice_value" class="value"></div>
+                            <input id="normalice" class="slider" type="range" min="0" , max="200" value="0">
+                        </div>
+                        <div class="range-slider">
+                            <label>Seek to frame by index</label>
+                            <div id="seek_by_index_value" class="value"></div>
+                            <input id="seek_by_index" class="slider" type="range" min="0" , max="100" value="0">
+                        </div>
+                        <div class="range-slider">
+                            <label>Seek to frame by time</label>
+                            <div id="seek_time_value" class="value"></div>
+                            <input id="seek_time" class="slider" type="range" min="0" , max="100" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row interface">
+                    <div class="col p-3">
+                        <table class="table text-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Command</th>
+                                    <th scope="col">Value</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <button class="btn btn-success">Get Status Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-    <script>
-        list = document.querySelectorAll(".list")
-
-        function activeList() {
-            list.forEach(item => {
-                item.classList.remove("active")
-                this.classList.add("active")
-            })
-        }
-
-        list.forEach(item => item.addEventListener("click", activeList))
-        list.forEach(item => item.addEventListener("mouseover", activeList))
-        list.forEach(item => item.addEventListener("mouseout", () => item.classList.remove("active")))
-    </script>
+    <script src="./js/frontend.js"></script>
 
 </body>
 
