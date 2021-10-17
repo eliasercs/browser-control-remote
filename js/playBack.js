@@ -18,41 +18,72 @@ show_value_seek_norm.innerHTML = seek_norm.value
 play_Button.addEventListener("click", () =>{
     var command =play_Button.getAttribute("cmd")
     var par=play_Button.getAttribute("par")
-    fetch_playBack(command,par)
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
 })
 
 stop_Button.addEventListener("click", () =>{
     var command =stop_Button.getAttribute("cmd")
     var par=stop_Button.getAttribute("par")
-    fetch_playBack(command,par)
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
 })
 
 prev_Button.addEventListener("click", () =>{
     var command =prev_Button.getAttribute("cmd")
     var par=prev_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
+    
 })
 
 next_Button.addEventListener("click", () =>{
     var command =next_Button.getAttribute("cmd")
     var par=next_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
 })
 
 first_Button.addEventListener("click", () =>{
     var command =first_Button.getAttribute("cmd")
     var par=first_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
 })
 
 last_Button.addEventListener("click", () =>{
     var command = last_Button.getAttribute("cmd")
     var par=last_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        alert("Por favor seleccione una estación")
+        console.log("Error")
+    }
 })
 
 seek_norm_input.addEventListener("change", () => {
@@ -76,7 +107,7 @@ seek_norm_input.addEventListener("change", () => {
  * @param {string} par 
  */
 async function fetch_playBack(command,par) {
-    const response = await fetch("system/station1/dhs1/playback",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -91,7 +122,7 @@ async function fetch_playBack(command,par) {
  * @param {Number} value Value captured through input
  */
 async function fetch_seek_norm(value){
-    const response = await fetch("system/station1/dhs1/playback",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -102,7 +133,7 @@ async function fetch_seek_norm(value){
 }
 
 async function move_seek_with_playbakButton(){
-    fetch("/system/station1/dhs1",{
+    fetch(`/system/${document.querySelector("#stations").value}/dhs1`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json"

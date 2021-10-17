@@ -1,5 +1,5 @@
 async function seek(cmd, par) {
-    const response = await fetch("/system/station1/dhs1/playback", {
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -32,7 +32,7 @@ async function playback(cmd, par) {
 }
 
 async function info() {
-    const response = await fetch("/system/station1/dhs1", {
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -43,7 +43,7 @@ async function info() {
 }
 
 async function infoimg() {
-    const response = fetch("/system/station1/dhs1/image?overlay", {
+    const response = fetch(`/system/${document.querySelector("#stations").value}/dhs1/image?overlay`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

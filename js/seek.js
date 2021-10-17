@@ -28,7 +28,7 @@ frame_time_input.addEventListener("change",() =>{
  * @param {*} message action performed
  */
 async function fetch_frame(cmd,value, message) {
-    const response = await fetch("system/station1/dhs1/playback",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
