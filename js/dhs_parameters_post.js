@@ -23,22 +23,21 @@ if (document.getElementById("stations").value !== "default"){
     var url_cam_bref_del = `system/${document.getElementById("stations").value}/dhs1/par/cam-bref-del`
     var url_cam_reset_spooler = `system/${document.getElementById("stations").value}/dhs1/par/cam-reset-spooler`
     var url_cam_tones = `system/${document.getElementById("stations").value}/dhs1/par/cam-tones`
+
+    //capture
+    const fps = document.querySelector("#fps")
+    const exp = document.querySelector("#exposure")
+    const gain_cap = document.querySelector("#gain_cap")
+
+    //color
+    const red = document.querySelector("#red")
+    const blue = document.querySelector("#blue")
+    const imgbr = document.querySelector("#brightness")
+    const imgco = document.querySelector("#contrast")
+    const imgsat = document.querySelector("#saturation")
+    const imggain = document.querySelector("#gain_color")
+    const imggamma = document.querySelector("#gamma")
 }
-
-
-//capture
-const fps = document.querySelector("#fps")
-const exp = document.querySelector("#exposure")
-const gain_cap = document.querySelector("#gain_cap")
-
-//color
-const red = document.querySelector("#red")
-const blue = document.querySelector("#blue")
-const imgbr = document.querySelector("#brightness")
-const imgco = document.querySelector("#contrast")
-const imgsat = document.querySelector("#saturation")
-const imggain = document.querySelector("#gain_color")
-const imggamma = document.querySelector("#gamma")
 
 // Width
 
@@ -62,7 +61,8 @@ document.getElementById("left").addEventListener("change", () => {
 
 document.getElementById("right").addEventListener("change", () => {
     if (document.getElementById("stations").value !== "default") {
-        fetch_post_params(url_right, parseInt(document.getElementById("right").value))
+        var url = `system/${document.getElementById("stations").value}/dhs1/par/right`
+        fetch_post_params(url, parseInt(document.getElementById("right").value))
     }
 })
 
