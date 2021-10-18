@@ -33,23 +33,11 @@
                         <button class="btn-device deviceButton" id="record" cmd="mode" par="record">Record</button>
                     </div>
                     <div class="form-group">
-                        <button class="btn-device deviceButton" id="playback" cmd="mode"
-                            par="playback">Playback</button>
+                        <button class="btn-device deviceButton" id="playback" cmd="mode" par="playback">Playback</button>
                     </div>
-                    <select id="stations">
-                        <option value="default"> Seleccione una estación</option>
-                        
-                    </select>
                 </div>
             </div>
             <div class="col-md-8">
-                <div>
-                    <div id="imgdiv">
-                        <img id="frameRescatado">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
                 <div class="infoState">
                     <div class="card text-white bg-primary mb-3" style="max-width: 30rem;">
                         <div class="card-body">
@@ -64,6 +52,16 @@
             </div>
         </div>
     </div>
+
+
+    <div class="col-md-8">
+        <div>
+            <div id="imgdiv">
+                <img id="frameRescatado">
+            </div>
+        </div>
+    </div>
+
 
     <br />
     <div class="container p-3">
@@ -109,38 +107,145 @@
                 <input type="range" class="form-range" id="frame_time">
                 <label for="value" id="seek_frame_time"></label>
             </div>
+            <!-- param dhs-->
+            <form>
+                <p>IMAGE</p>
+            <label for="width">width</label>
+            <input type="text" id="width" readonly>
+            
+            <label for="height">height</label>
+            <input type="text" id="height" readonly>
+            
+            <label for="left">left</label>
+            <input type="text" id="left" readonly>
+
+            <label for="top">top</label>
+            <input type="text" id="top" readonly>
+
+            <label for="depth">depth</label>
+            <input type="text" id="depth" readonly>
+            <input type="reset">
+            </form>
+            
+            <form>
+                <p>CAPTURE</p>
+            <label for="fps">fps</label>
+            <input type="text" id="fps">
+
+            <label for="exposure">exposure</label>
+            <input type="text" id="exposure">
+
+            <label for="gain_cap">gain</label>
+            <input type="text" id="gain_cap" >
+            <input type="reset">
+            </form>
+
+            <form>
+            <p>COLOR</p>
+            <label for="red">red</label>
+            <input type="range" id="red" >
+            <input type="text" id="value_red" >
+
+            <label for="blue">blue</label>
+            <input type="range" id="blue" >
+            <input type="text" id="value_blue" readonly>
+
+            <label for="brightness">brightness</label>
+            <input type="range" id="brightness">
+            <input type="text" id="value_brightness" readonly>
+
+            <label for="contrast">contrast</label>
+            <input type="range" id="contrast">
+            <input type="text" id="value_contrast" readonly>
+
+            <label for="saturation">saturation</label>
+            <input type="range" id="saturation">
+            <input type="text" id="value_saturation" readonly>
+
+            <label for="gain_color">gain</label>
+            <input type="range" id="gain_color">
+            <input type="text" id="value_gain" readonly>
+            
+            <label for="gamma">gamma</label>
+            <input type="range" id="gamma">
+            <input type="text" id="value_gamma" readonly>
+
+            <input type="reset">
+            </form>
+            
+            <form>
+            <p>CAMERA</p>
+            <label>SHUTTER</label><br>
+            <input type="radio" id="ROLLING" name="shutter" checked>
+            <label for="ROLLING" >ROLLING</label>
+            <input type="radio" id="GLOBAL" name="shutter">
+            <label for="GLOBAL" >GLOBAL</label>
+            <input type="radio" id="BRIGHT" name="shutter">
+            <label for="BRIGHT" >BRIGHT F.</label>
+            <br>
+            <label>TRIGGER</label><br>
+            <input type="radio" id="INTERNAL" name="trigger" checked>
+            <label for="INTERNAL" >INTERNAL</label>
+            <input type="radio" id="GPIO0" name="trigger">
+            <label for="GPIO0" >GPIO0</label>
+            <input type="radio" id="GPIO1"name="trigger">
+            <label for="GPIO1" >GPIO1</label>
+            <input type="radio" id="GPIO2"name="trigger">
+            <label for="GPIO2" >GPIO</label>
+            <input type="radio" id="GPIO3"name="trigger">
+            <label for="GPIO3" >GPIO3</label>
+            <br>
+            <label>MISC</label><br>
+            <input type="radio" id="FAN" name="MISC" checked>
+            <label for="FAN" >FAN</label>
+            <input type="radio" id="LIGHTS" name="MISC">
+            <label for="LIGHTS" >LIGHTS</label>
+            <input type="radio" id="RESET TIME" name="MISC">
+            <label for="RESET TIME" >RESET TIME</label>
+            <br>
+            <label>BLACK REFERENCE</label><br>
+            <input type="radio" id="ADD" name="black_reference" checked>
+            <label for="ADD" >ADD</label>
+            <input type="radio" id="DEL" name="black_reference">
+            <label for="DEL" >DEL</label>
+            <br>
+            <label>default</label>
+            <input type="reset" id="RESET ALL">
+            <label>STORANGE</label>
+            <input type="reset" id="RESET SPOOLER">
+            </form>
+            
+            <form>
+                <p>TONE CURVES</p>
+                <input type="radio" id="1.00" name="TONE CURVES" checked>
+                <label for="1.00">1.00</label>
+                <input type="radio" id="1.25" name="TONE CURVES">
+                <label for="1.25">1.25</label>
+                <input type="radio" id="1.60" name="TONE CURVES">
+                <label for="1.60">1.60</label>
+                <input type="radio" id="2.00" name="TONE CURVES">
+                <label for="2.00">2.00</label>
+                <input type="radio" id="2.50" name="TONE CURVES">
+                <label for="2.50">2.50</label>
+                <input type="radio" id="3.20" name="TONE CURVES">
+                <label for="3.20">3.20</label>
+                <input type="radio" id="4.00" name="TONE CURVES">
+                <label for="4.00">4.00</label>
+                <input type="radio" id="5.00" name="TONE CURVES">
+                <label for="5.00">5.00</label>
+            </form>
+
         </div>
     </div>
-
+    <script src="./js/dhs_parameters_get.js"></script>
+    <script src="./js/dhs_parameters_post.js"></script>
     <script src="js/fetch.js"></script>
     <script src="js/main.js"></script>
+
     <script src="./js/devicemodes.js"></script>
     <script src="./js/info.js"></script>
     <script src="./js/playBack.js"></script>
     <script src="./js/seek.js"></script>
-    <script src="./js/image.js"></script>
-    <script>
-        var select = document.querySelector("#stations")
-        
-        fetch("/system/stations",{
-            method:"GET",
-            headers:{
-                "Content-Type":"application/json"
-            }
-        })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data.station)
-            data.station.map(val=>{
-                var option2 = document.createElement("option")
-                option2.value=val.id
-                option2.text = val.id
-                select.appendChild(option2)
-            })
-        })
-        
-    </script>
-
 </body>
 
 </html>
