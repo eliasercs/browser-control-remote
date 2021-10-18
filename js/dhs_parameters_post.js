@@ -1,101 +1,103 @@
-var url_par_list=`system/${document.getElementById("stations").value}/dhs1/parlist`
-var url_width=`system/${document.getElementById("stations").value}/dhs1/par/width`
-var url_height=`system/${document.getElementById("stations").value}/dhs1/par/height`
-var url_left=`system/${document.getElementById("stations").value}/dhs1/par/left`
-var url_right=`system/${document.getElementById("stations").value}/dhs1/par/right`
-var url_fps=`system/${document.getElementById("stations").value}/dhs1/par/fps`
-var url_exp=`system/${document.getElementById("stations").value}/dhs1/par/exp`
-var url_gain=`system/${document.getElementById("stations").value}/dhs1/par/gain`
-var url_wb_red=`system/${document.getElementById("stations").value}/dhs1/par/wb-red`
-var url_wb_blue=`system/${document.getElementById("stations").value}/dhs1/par/wb-blue`
-var url_imgbr=`system/${document.getElementById("stations").value}/dhs1/par/img-br`
-var url_imgco=`system/${document.getElementById("stations").value}/dhs1/par/img-co`
-var url_imgsat=`system/${document.getElementById("stations").value}/dhs1/par/img-sat`
-var url_imggain=`system/${document.getElementById("stations").value}/dhs1/par/img-gain`
-var url_imggamma=`system/${document.getElementById("stations").value}/dhs1/par/img-gamma`
-var url_cam_shutter=`system/${document.getElementById("stations").value}/dhs1/par/cam-shutter`
-var url_cam_trigger=`system/${document.getElementById("stations").value}/dhs1/par/cam-trigger`
-var url_cam_fan=`system/${document.getElementById("stations").value}/dhs1/par/cam-fan`
-var url_cam_lights=`system/${document.getElementById("stations").value}/dhs1/par/cam-lights`
-var url_cam_rst_time=`system/${document.getElementById("stations").value}/dhs1/par/cam-rst-time`
-var url_cam_bref_add=`system/${document.getElementById("stations").value}/dhs1/par/cam-bref-add`
-var url_cam_bref_del=`system/${document.getElementById("stations").value}/dhs1/par/cam-bref-del`
-var url_cam_reset_spooler=`system/${document.getElementById("stations").value}/dhs1/par/cam-reset-spooler`
-var url_cam_tones=`system/${document.getElementById("stations").value}/dhs1/par/cam-tones`
+if (document.getElementById("stations").value !== "default"){
+    var url_par_list = `system/${document.getElementById("stations").value}/dhs1/parlist`
+    var url_width = `system/${document.getElementById("stations").value}/dhs1/par/width`
+    var url_height = `system/${document.getElementById("stations").value}/dhs1/par/height`
+    var url_left = `system/${document.getElementById("stations").value}/dhs1/par/left`
+    var url_right = `system/${document.getElementById("stations").value}/dhs1/par/right`
+    var url_fps = `system/${document.getElementById("stations").value}/dhs1/par/fps`
+    var url_exp = `system/${document.getElementById("stations").value}/dhs1/par/exp`
+    var url_gain = `system/${document.getElementById("stations").value}/dhs1/par/gain`
+    var url_wb_red = `system/${document.getElementById("stations").value}/dhs1/par/wb-red`
+    var url_wb_blue = `system/${document.getElementById("stations").value}/dhs1/par/wb-blue`
+    var url_imgbr = `system/${document.getElementById("stations").value}/dhs1/par/img-br`
+    var url_imgco = `system/${document.getElementById("stations").value}/dhs1/par/img-co`
+    var url_imgsat = `system/${document.getElementById("stations").value}/dhs1/par/img-sat`
+    var url_imggain = `system/${document.getElementById("stations").value}/dhs1/par/img-gain`
+    var url_imggamma = `system/${document.getElementById("stations").value}/dhs1/par/img-gamma`
+    var url_cam_shutter = `system/${document.getElementById("stations").value}/dhs1/par/cam-shutter`
+    var url_cam_trigger = `system/${document.getElementById("stations").value}/dhs1/par/cam-trigger`
+    var url_cam_fan = `system/${document.getElementById("stations").value}/dhs1/par/cam-fan`
+    var url_cam_lights = `system/${document.getElementById("stations").value}/dhs1/par/cam-lights`
+    var url_cam_rst_time = `system/${document.getElementById("stations").value}/dhs1/par/cam-rst-time`
+    var url_cam_bref_add = `system/${document.getElementById("stations").value}/dhs1/par/cam-bref-add`
+    var url_cam_bref_del = `system/${document.getElementById("stations").value}/dhs1/par/cam-bref-del`
+    var url_cam_reset_spooler = `system/${document.getElementById("stations").value}/dhs1/par/cam-reset-spooler`
+    var url_cam_tones = `system/${document.getElementById("stations").value}/dhs1/par/cam-tones`
+}
+
 
 //capture
-const fps=document.querySelector("#fps")
-const exp=document.querySelector("#exposure")
-const gain_cap=document.querySelector("#gain_cap")
+const fps = document.querySelector("#fps")
+const exp = document.querySelector("#exposure")
+const gain_cap = document.querySelector("#gain_cap")
 
 //color
-const red=document.querySelector("#red")
-const blue=document.querySelector("#blue")
-const imgbr=document.querySelector("#brightness")
-const imgco=document.querySelector("#contrast")
-const imgsat=document.querySelector("#saturation")
-const imggain=document.querySelector("#gain_color")
-const imggamma=document.querySelector("#gamma")
+const red = document.querySelector("#red")
+const blue = document.querySelector("#blue")
+const imgbr = document.querySelector("#brightness")
+const imgco = document.querySelector("#contrast")
+const imgsat = document.querySelector("#saturation")
+const imggain = document.querySelector("#gain_color")
+const imggamma = document.querySelector("#gamma")
 
 // Width
 
-if (document.querySelector("#stations").value!=="default") {
-    document.getElementById("width").addEventListener("change",() => {
-        if (document.getElementById("stations").value!=="default"){
-            fetch_post_params(url_width,document.getElementById("width").value)
-        }
-    })
-    
-    document.getElementById("height").addEventListener("change",() => {
-        if (document.getElementById("stations").value!=="default"){
-            fetch_post_params(url_height,document.getElementById("height").value)
-        }
-    })
-    
-    document.getElementById("left").addEventListener("change",() => {
-        if (document.getElementById("stations").value!=="default"){
-            fetch_post_params(url_left,document.getElementById("left").value)
-        }
-    })
-    
-    document.getElementById("right").addEventListener("change",() => {
-        if (document.getElementById("stations").value!=="default"){
-            fetch_post_params(url_right,document.getElementById("right").value)
-        }
-    })
-}
+document.getElementById("width").addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        fetch_post_params(url_width, parseInt(document.getElementById("width").value))
+    }
+})
+
+document.getElementById("height").addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        fetch_post_params(url_height, parseInt(document.getElementById("height").value))
+    }
+})
+
+document.getElementById("left").addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        fetch_post_params(url_left, parseInt(document.getElementById("left").value))
+    }
+})
+
+document.getElementById("right").addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        fetch_post_params(url_right, parseInt(document.getElementById("right").value))
+    }
+})
+
 
 
 //shutter
 //const shutter=document.querySelector("#shutter")
 
 //CAPTURE
-fps.addEventListener("change",()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=fps.value
-        val=parseFloat(val)
-        var url=url_fps
-        fetch_post_params(url,val)
+fps.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = fps.value
+        val = parseFloat(val)
+        var url = url_fps
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-exp.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=exp.value
-        val= parseFloat(val)
-        var url=url_exp
-        fetch_post_params(url,val)
+exp.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = exp.value
+        val = parseFloat(val)
+        var url = url_exp
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-gain_cap.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=gain_cap.value
-        val= parseFloat(val)
-        var url=url_gain
-        fetch_post_params(url,val)
+gain_cap.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = gain_cap.value
+        val = parseFloat(val)
+        var url = url_gain
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
@@ -104,52 +106,52 @@ gain_cap.addEventListener("change", ()=>{
 
 
 //COLOR
-red.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=red.value
-        val= parseFloat(val)
-        var url=url_wb_red
-        fetch_post_params(url,val)
+red.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = red.value
+        val = parseFloat(val)
+        var url = url_wb_red
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-blue.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=blue.value
-        val= parseFloat(val)
-        var url=url_wb_blue
-        fetch_post_params(url,val)
+blue.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = blue.value
+        val = parseFloat(val)
+        var url = url_wb_blue
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-imgbr.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=imgbr.value
-        val= parseFloat(val)
-        var url=url_imgbr
-        fetch_post_params(url,val)        
+imgbr.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = imgbr.value
+        val = parseFloat(val)
+        var url = url_imgbr
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-imgco.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=imgco.value
-        val= parseFloat(val)
-        var url=url_imgco
-        fetch_post_params(url,val)
+imgco.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = imgco.value
+        val = parseFloat(val)
+        var url = url_imgco
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
 
-imgsat.addEventListener("change", ()=>{
-    if (document.getElementById("stations").value!=="default") {
-        var val=imgsat.value
-        val= parseFloat(val)
-        var url=url_imgsat
-        fetch_post_params(url,val)        
+imgsat.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = imgsat.value
+        val = parseFloat(val)
+        var url = url_imgsat
+        fetch_post_params(url, val)
     }
     //console.log(val)
 })
@@ -166,14 +168,13 @@ imgsat.addEventListener("change", ()=>{
 
 
 //fetch post
- function fetch_post_params(url,val){
-    fetch(url,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
+function fetch_post_params(url, val) {
+    console.log(url)
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        body:JSON.stringify({value:val})
+        body: JSON.stringify({ value: val })
     })
-    .then(res => console.log(res.json()))
-    .catch(err => console.log(err))
 }

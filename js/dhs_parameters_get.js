@@ -35,11 +35,11 @@ fetch(url_width)
 .then(res => res.json())
 .then(data=>{
     //console.log(data)
-    let element=document.getElementById("width")
-    element.setAttribute("min",data.range.lo)
-    element.setAttribute("max",data.range.hi)
-    element.value=data.value
-    document.getElementById("widthValue").value = data.value
+        let element=document.getElementById("width")
+        element.setAttribute("min",data.range.lo)
+        element.setAttribute("max",data.range.hi)
+        element.value=data.value
+        document.getElementById("widthValue").value = data.value
 })
 .catch(err => console.log(err))
 
@@ -48,11 +48,11 @@ fetch(url_height)
 .then(res => res.json())
 .then(data=>{
     //console.log(data)
-    let element=document.getElementById('height')
-    element.setAttribute("min",data.range.lo)
-    element.setAttribute("max",data.range.hi)
-    element.value=data.value
-    document.getElementById("heightValue").value = data.value
+        let element=document.getElementById('height')
+        element.setAttribute("min",data.range.lo)
+        element.setAttribute("max",data.range.hi)
+        element.value=data.value
+        document.getElementById("heightValue").value = data.value
 })
 .catch(err => console.log(err))
 
@@ -61,11 +61,11 @@ fetch(url_left)
 .then(res => res.json())
 .then(data=>{
     //console.log(data)
-    let element=document.getElementById('left')
-    element.setAttribute("min",data.range.lo)
-    element.setAttribute("max",data.range.hi)
-    element.value=data.value
-    document.getElementById("leftValue").value = data.value
+        let element=document.getElementById('left')
+        element.setAttribute("min",data.range.lo)
+        element.setAttribute("max",data.range.hi)
+        element.value=data.value
+        document.getElementById("leftValue").value = data.value
 })
 .catch(err => console.log(err))
 
@@ -74,11 +74,11 @@ fetch(url_left)
 .then(res => res.json())
 .then(data=>{
     //console.log(data)
-    let element=document.getElementById('right')
-    element.setAttribute("min",data.range.lo)
-    element.setAttribute("max",data.range.hi)
-    element.value=data.value
-    document.getElementById("rightValue").value = data.value
+        let element=document.getElementById('right')
+        element.setAttribute("min",data.range.lo)
+        element.setAttribute("max",data.range.hi)
+        element.value=data.value
+        document.getElementById("rightValue").value = data.value
 })
 .catch(err => console.log(err))
 
