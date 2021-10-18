@@ -9,17 +9,6 @@ list = document.querySelectorAll(".list")
 const deviceModeSubtitle = document.querySelector("#deviceModeSubtitle")
 const playbackSubtitle = document.querySelector("#playbackSubtitle")
 
-function activeList() {
-    list.forEach(item => {
-        item.classList.remove("active")
-        this.classList.add("active")
-    })
-}
-
-list.forEach(item => item.addEventListener("click", activeList))
-list.forEach(item => item.addEventListener("mouseover", activeList))
-list.forEach(item => item.addEventListener("mouseout", () => item.classList.remove("active")))
-
 document.querySelector(".navigation").addEventListener("mouseover", () => {
     document.querySelector(".body").classList.add("navigation-hover")
     deviceModeSubtitle.classList.remove("hide")
@@ -43,9 +32,9 @@ document.querySelector("#stations").addEventListener("change", () => {
 })
 
 // Slider
-document.querySelector("#normalice_value").innerHTML = document.querySelector("#normalice").value
-document.querySelector("#seek_by_index_value").innerHTML = document.querySelector("#seek_by_index").value
-document.querySelector("#seek_time_value").innerHTML = document.querySelector("#seek_time").value
+//document.querySelector("#normalice_value").innerHTML = document.querySelector("#normalice").value
+//document.querySelector("#seek_by_index_value").innerHTML = document.querySelector("#seek_by_index").value
+//document.querySelector("#seek_time_value").innerHTML = document.querySelector("#seek_time").value
 
 document.querySelector("#normalice").addEventListener("input",() => {
     document.querySelector("#normalice_value").innerHTML = document.querySelector("#normalice").value
@@ -57,10 +46,31 @@ document.querySelector("#seek_by_index").addEventListener("input",() => {
     document.querySelector("#seek_by_index_value").innerHTML = document.querySelector("#seek_by_index").value
     var pixeles = document.querySelector("#seek_by_index").value/document.querySelector("#seek_by_index").getAttribute("max")
     document.querySelector("#seek_by_index_value").style.left = (pixeles*92.5)+"%"
+
+    document.querySelector("#seek_time_value").innerHTML = document.querySelector("#seek_time").value
+    var pixeles = document.querySelector("#seek_time").value/document.querySelector("#seek_time").getAttribute("max")
+    document.querySelector("#seek_time_value").style.left = (pixeles*92.5)+"%"
 })
 
 document.querySelector("#seek_time").addEventListener("input", () => {
     document.querySelector("#seek_time_value").innerHTML = document.querySelector("#seek_time").value
     var pixeles = document.querySelector("#seek_time").value/document.querySelector("#seek_time").getAttribute("max")
     document.querySelector("#seek_time_value").style.left = (pixeles*92.5)+"%"
+
+    document.querySelector("#seek_by_index_value").innerHTML = document.querySelector("#seek_by_index").value
+    var pixeles = document.querySelector("#seek_by_index").value/document.querySelector("#seek_by_index").getAttribute("max")
+    document.querySelector("#seek_by_index_value").style.left = (pixeles*92.5)+"%"
 })
+
+// Get a list of stations
+fetch("/system/stations")
+.then(res => res.json())
+.then(data => {
+    data.station.map(item => {
+        var option = document.createElement("option")
+        option.value = item.id
+        option.text = item.id
+        document.getElementById("stations").appendChild(option)
+    })
+})
+.catch(err => console.log(err))

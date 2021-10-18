@@ -1,39 +1,103 @@
-const infodiv = document.querySelector("#frameRescatado")
-
 var play = false
 
 function requestimg() {
     if (play) {
         infoimg()
-
         .then(res => res.blob())
             .then(data => {
-                //console.log(data.fri)
-                console.log("data", data)
                 var file = new File([data], "file.jpeg")
-                console.log(file)
                 var urlCreator = window.URL || window.webkitURL
-                document.querySelector("#frameRescatado").setAttribute("src", urlCreator.createObjectURL(file))
-
+                document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
             })
             .catch(err => console.log(err))
     }
 }
 
-
-play_button.addEventListener("click", () => {
-    play = true
-    setInterval("requestimg()", 10050)
+document.querySelector("#play").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = true
+        setInterval("requestimg()", 250)
+    } else {
+        alert("You must select a station.")
+    }
 })
-stop_button.addEventListener("click", () => {
-    play = false
-    infoimg()
+
+document.querySelector("#stop").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = false
+        infoimg()
+            .then(res => res.blob())
+            .then(data => {
+                var file = new File([data], "file.jpeg")
+                var urlCreator = window.URL || window.webkitURL
+                document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
+            })
+            .catch(err => console.log(err))
+    } else {
+        alert("You must select a station.")
+    }
+})
+
+document.querySelector("#last").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = false
+        infoimg()
         .then(res => res.blob())
         .then(data => {
             var file = new File([data], "file.jpeg")
-            console.log(file)
             var urlCreator = window.URL || window.webkitURL
-            document.querySelector("#frameRescatado").setAttribute("src", urlCreator.createObjectURL(file))
+            document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
         })
         .catch(err => console.log(err))
+    } else {
+        alert("You must select a station.")
+    }
+})
+
+document.querySelector("#prev").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = false
+        infoimg()
+        .then(res => res.blob())
+        .then(data => {
+            var file = new File([data], "file.jpeg")
+            var urlCreator = window.URL || window.webkitURL
+            document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
+        })
+        .catch(err => console.log(err))
+    } else {
+        alert("You must select a station.")
+    }
+})
+
+document.querySelector("#next").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = false
+        infoimg()
+        .then(res => res.blob())
+        .then(data => {
+            var file = new File([data], "file.jpeg")
+            var urlCreator = window.URL || window.webkitURL
+            document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
+        })
+        .catch(err => console.log(err))
+    } else {
+        alert("You must select a station.")
+    }
+})
+
+document.querySelector("#first").addEventListener("click", () => {
+    if (document.querySelector("#stations").value!=="default"){
+        play = false
+        infoimg()
+        .then(res => res.blob())
+        .then(data => {
+            var file = new File([data], "file.jpeg")
+            var urlCreator = window.URL || window.webkitURL
+            document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
+        })
+        .catch(err => console.log(err))
+    } else {
+        alert("You must select a station.")
+    }
 })

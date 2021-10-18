@@ -8,9 +8,9 @@ const next_Button = document.querySelector("#next")
 const first_Button = document.querySelector("#first")
 const last_Button = document.querySelector("#last")
 
-const seek_norm_input = document.querySelector("#seek_norm")
-const show_value_seek_norm = document.querySelector("#value")
-show_value_seek_norm.innerHTML = seek_norm.value
+const seek_norm_input = document.querySelector("#normalice")
+const show_value_seek_norm = document.querySelector("#normalice_value")
+show_value_seek_norm.innerHTML = seek_norm_input.value
 
 /**
  * For each button, when the user clicks, the value of the respective attributes is obtained and the fetch_device method is executed
@@ -18,54 +18,83 @@ show_value_seek_norm.innerHTML = seek_norm.value
 play_Button.addEventListener("click", () =>{
     var command =play_Button.getAttribute("cmd")
     var par=play_Button.getAttribute("par")
-    fetch_playBack(command,par)
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+    }else{
+        //alert("You must select a station.")
+    }
 })
 
 stop_Button.addEventListener("click", () =>{
     var command =stop_Button.getAttribute("cmd")
     var par=stop_Button.getAttribute("par")
-    fetch_playBack(command,par)
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+    }else{
+        //alert("You must select a station.")
+    }
 })
 
 prev_Button.addEventListener("click", () =>{
     var command =prev_Button.getAttribute("cmd")
     var par=prev_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        //alert("You must select a station.")
+    }
+    
 })
 
 next_Button.addEventListener("click", () =>{
     var command =next_Button.getAttribute("cmd")
     var par=next_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        //alert("You must select a station.")
+    }
 })
 
 first_Button.addEventListener("click", () =>{
     var command =first_Button.getAttribute("cmd")
     var par=first_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        //alert("You must select a station.")
+    }
 })
 
 last_Button.addEventListener("click", () =>{
     var command = last_Button.getAttribute("cmd")
     var par=last_Button.getAttribute("par")
-    fetch_playBack(command,par)
-    move_seek_with_playbakButton()
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_playBack(command,par)
+        move_seek_with_playbakButton()
+    }else{
+        //alert("You must select a station.")
+    }
 })
 
 seek_norm_input.addEventListener("change", () => {
     var value = seek_norm_input.value
-    show_value_seek_norm.innerHTML = seek_norm.value
+    show_value_seek_norm.innerHTML = seek_norm_input.value
     fetch_seek_norm(value)
     info()
     .then(res => res.json())
     .then(data => {
         frame_index_input.value = data.fri
         frame_time_input.value = data.fri
-        document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
-        document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
+        var pixelesIndex = document.querySelector("#seek_by_index").value/document.querySelector("#seek_by_index").getAttribute("max")
+        document.querySelector("#seek_by_index_value").style.left = (pixelesIndex*92.5)+"%"
+        document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
+        var pixelesTime = document.querySelector("#seek_time").value/document.querySelector("#seek_time").getAttribute("max")
+        document.querySelector("#seek_time_value").style.left = (pixelesTime*92.5)+"%"
+        document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
     })
     .catch(err => console.log(err))
 })
@@ -76,7 +105,7 @@ seek_norm_input.addEventListener("change", () => {
  * @param {string} par 
  */
 async function fetch_playBack(command,par) {
-    const response = await fetch("system/station1/dhs1/playback",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -91,7 +120,7 @@ async function fetch_playBack(command,par) {
  * @param {Number} value Value captured through input
  */
 async function fetch_seek_norm(value){
-    const response = await fetch("system/station1/dhs1/playback",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/playback`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -102,7 +131,7 @@ async function fetch_seek_norm(value){
 }
 
 async function move_seek_with_playbakButton(){
-    fetch("/system/station1/dhs1",{
+    fetch(`/system/${document.querySelector("#stations").value}/dhs1`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -117,23 +146,29 @@ async function move_seek_with_playbakButton(){
             frame_index_input.setAttribute("min",0)
             frame_index_input.setAttribute("max",frc-1)
             frame_index_input.value = fri
-            document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
+            //document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
+            var pixelesIndex = document.querySelector("#seek_by_index").value / document.querySelector("#seek_by_index").getAttribute("max")
+            document.querySelector("#seek_by_index_value").style.left = (pixelesIndex * 92.5) + "%"
+            document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
             frame_index_input.addEventListener("change",async () => {
-                document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
+                document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
                 seek("seek_to_frame",frame_index_input.value)
                 frame_time_input.value = frame_index_input.value
-                document.querySelector("#seek_frame_time").innerHTML = frame_time_input.value/22000.0
+                document.querySelector("#seek_time_value").innerHTML = frame_time_input.value/22000.0
             })
             // Seek to frame by time
             frame_time_input.setAttribute("min",0)
             frame_time_input.setAttribute("max",(frc-1))
             frame_time_input.value = fri
-            document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
+            //document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
+            var pixelesTime = document.querySelector("#seek_time").value / document.querySelector("#seek_time").getAttribute("max")
+            document.querySelector("#seek_time_value").style.left = (pixelesTime * 92.5) + "%"
+            document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
             frame_time_input.addEventListener("change", async () => {
-                document.querySelector("#seek_frame_time").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
+                document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
                 seek("seek_to_time",(frame_time_input.value/22000.0).toFixed(6))
                 frame_index_input.value = frame_time_input.value
-                document.querySelector("#seek_frame_index").innerHTML = frame_index_input.value
+                document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
             })
         }
     })

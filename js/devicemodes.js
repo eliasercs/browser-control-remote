@@ -11,19 +11,31 @@ const playback_button = document.querySelector('#playback');
 record_button.addEventListener("click", () =>{
     var command = record_button.getAttribute("cmd");
     var par = record_button.getAttribute("par");
-    fetch_device(command,par);
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_device(command,par)
+    }else{
+        alert("You must select a station.")
+    }
 })
 
 setup_button.addEventListener("click", () =>{
     var command = setup_button.getAttribute("cmd");
     var par = setup_button.getAttribute("par");
-    fetch_device(command,par);
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_device(command,par)
+    }else{
+        alert("You must select a station.")
+    }
 })
 
 playback_button.addEventListener("click",() => {
     var command = playback_button.getAttribute("cmd");
     var par = playback_button.getAttribute("par");
-    fetch_device(command,par);
+    if(document.querySelector("#stations").value!=="default"){
+        fetch_device(command,par)
+    }else{
+        alert("You must select a station.")
+    }
 })
 
 
@@ -33,7 +45,7 @@ playback_button.addEventListener("click",() => {
  * @param {string} par "playback", "record" or "setup"
  */
 async function fetch_device(command,par) {
-    const response = await fetch("system/station1/dhs1",{
+    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1`,{
         method: "POST",
         headers: {
             "Content-Type":"application/json"
