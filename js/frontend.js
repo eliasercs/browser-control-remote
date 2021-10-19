@@ -74,3 +74,29 @@ fetch("/system/stations")
     })
 })
 .catch(err => console.log(err))
+
+// Update input[range]
+
+document.getElementById("width").addEventListener("input",() => {
+    if (document.getElementById("stations").value!=="default") {
+        document.getElementById("widthValue").value = document.getElementById("width").value
+    }
+})
+
+document.getElementById("height").addEventListener("input",() => {
+    if (document.getElementById("stations").value!=="default") {
+        document.getElementById("heightValue").value = document.getElementById("height").value
+    }
+})
+
+document.getElementById("left").addEventListener("input",() => {
+    if (document.getElementById("stations").value!=="default") {
+        document.getElementById("leftValue").value = document.getElementById("left").value
+    }
+})
+
+document.getElementById("right").addEventListener("input",() => {
+    if (document.getElementById("stations").value!=="default") {
+        document.getElementById("rightValue").value = document.getElementById("right").value
+    }
+})

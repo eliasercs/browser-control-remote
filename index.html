@@ -153,62 +153,63 @@
                         </div>
                         <div class="range-slider">
                             <label>Seek to frame by time</label>
-                            <div id="seek_time_value" class="value"></div>
+                            <div id="seek_time_value" class="value" style="width: 60px;"></div>
                             <input id="seek_time" class="slider" type="range">
                         </div>
                     </div>
                 </div>
 
                 <div class="row interface">
+
                     <div class="col text-center">
                         <form>
-                            <p>IMAGE</p>
+                            <p class="subtitle text-center">IMAGE</p>
                             <div class="form-group">
                                 <label for="width">width</label>
-                                <input class="form-control" type="text" id="width" readonly>
+                                <input class="form-control slider" type="range" id="width">
+                                <input class="form-control" type="text" id="widthValue" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="height">height</label>
-                                <input class="form-control" type="text" id="height" readonly>
+                                <input class="form-control slider" type="range" id="height">
+                                <input class="form-control" type="text" id="heightValue" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="left">left</label>
-                                <input class="form-control" type="text" id="left" readonly>
+                                <input class="form-control slider" type="range" id="left">
+                                <input class="form-control" type="text" id="leftValue" readonly>
                             </div>
 
                             <div class="form-group">
-                                <label for="top">top</label>
-                                <input class="form-control" type="text" id="top" readonly>
+                                <label for="top">right</label>
+                                <input class="form-control slider" type="range" id="right">
+                                <input class="form-control" type="text" id="rightValue" readonly>
                             </div>
-
-                            <div class="form-group">
-                                <label for="depth">depth</label>
-                                <input class="form-control" type="text" id="depth" readonly>
-                            </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
                     <div class="col text-center">
                         <form>
-                            <p>CAPTURE</p>
+                            <p class="subtitle text-center">CAPTURE</p>
                             <div class="form-group">
                                 <label for="fps">fps</label>
-                                <input class="form-control" type="text" id="fps">
+                                <input class="form-control slider" type="range" id="fps">
+                                <input class="form-control" type="text" id="fps_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="exposure">exposure</label>
-                                <input class="form-control" type="text" id="exposure">
+                                <input class="form-control slider" type="range" id="exposure">
+                                <input class="form-control" type="text" id="exposure_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="gain_cap">gain</label>
-                                <input class="form-control" type="text" id="gain_cap">
+                                <input class="form-control slider" type="range" id="gain_cap">
+                                <input class="form-control" type="text" id="gain_cap_value" readonly>
                             </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -216,7 +217,7 @@
 
                 <div class="interface">
                     <form>
-                        <p class="text-center p-4">COLOR</p>
+                        <p class="subtitle text-center p-4">COLOR</p>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -266,8 +267,6 @@
                                     <input class="form-control slider" type="range" id="gamma">
                                     <input class="form-control" type="text" id="value_gamma" readonly>
                                 </div>
-        
-                                <input class="form-control" type="reset">
                             </div>
                         </div>
                     </form>
@@ -276,67 +275,39 @@
                 <div class="row interface">
                     <div class="col">
                         <form>
-                            <p>CAMERA</p>
-                            <label>SHUTTER</label><br>
-                            <input type="radio" id="ROLLING" name="shutter" checked>
-                            <label for="ROLLING">ROLLING</label>
-                            <input type="radio" id="GLOBAL" name="shutter">
-                            <label for="GLOBAL">GLOBAL</label>
-                            <input type="radio" id="BRIGHT" name="shutter">
-                            <label for="BRIGHT">BRIGHT F.</label>
+                            <p class="subtitle text-center">CAMERA</p>
+                            <div class="form-group">
+                                <label>SHUTTER</label><br>
+                                <select class="form-control" id="shutter">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
                             <br>
-                            <label>TRIGGER</label><br>
-                            <input type="radio" id="INTERNAL" name="trigger" checked>
-                            <label for="INTERNAL">INTERNAL</label>
-                            <input type="radio" id="GPIO0" name="trigger">
-                            <label for="GPIO0">GPIO0</label>
-                            <input type="radio" id="GPIO1" name="trigger">
-                            <label for="GPIO1">GPIO1</label>
-                            <input type="radio" id="GPIO2" name="trigger">
-                            <label for="GPIO2">GPIO</label>
-                            <input type="radio" id="GPIO3" name="trigger">
-                            <label for="GPIO3">GPIO3</label>
+                            <div class="form-group">
+                                <label>TRIGGER</label><br>
+                                <select class="form-control" id="trigger">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
                             <br>
                             <label>MISC</label><br>
-                            <input type="radio" id="FAN" name="MISC" checked>
-                            <label for="FAN">FAN</label>
-                            <input type="radio" id="LIGHTS" name="MISC">
-                            <label for="LIGHTS">LIGHTS</label>
-                            <input type="radio" id="RESET TIME" name="MISC">
-                            <label for="RESET TIME">RESET TIME</label>
-                            <br>
-                            <label>BLACK REFERENCE</label><br>
-                            <input type="radio" id="ADD" name="black_reference" checked>
-                            <label for="ADD">ADD</label>
-                            <input type="radio" id="DEL" name="black_reference">
-                            <label for="DEL">DEL</label>
-                            <br>
-                            <label>default</label>
-                            <input type="reset" id="RESET ALL">
-                            <label>STORANGE</label>
-                            <input type="reset" id="RESET SPOOLER">
+                            <div class="form-group">
+                                <input type="checkbox" id="fan" name="MISC">
+                                <label for="FAN">FAN</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="light" name="MISC">
+                                <label for="LIGHTS">LIGHTS</label>
+                            </div>
                         </form>
                     </div>
                     <div class="col">
-                        <form id="tone_curves">
-                            <p>TONE CURVES</p>
-                            <input type="radio" id="1.00" name="TONE CURVES" checked>
-                            <label for="1.00">1.00</label>
-                            <input type="radio" id="1.25" name="TONE CURVES">
-                            <label for="1.25">1.25</label>
-                            <input type="radio" id="1.60" name="TONE CURVES">
-                            <label for="1.60">1.60</label>
-                            <input type="radio" id="2.00" name="TONE CURVES">
-                            <label for="2.00">2.00</label>
-                            <input type="radio" id="2.50" name="TONE CURVES">
-                            <label for="2.50">2.50</label>
-                            <input type="radio" id="3.20" name="TONE CURVES">
-                            <label for="3.20">3.20</label>
-                            <input type="radio" id="4.00" name="TONE CURVES">
-                            <label for="4.00">4.00</label>
-                            <input type="radio" id="5.00" name="TONE CURVES">
-                            <label for="5.00">5.00</label>
-                        </form>
+                            <p class="subtitle text-center">TONE CURVE</p>
+                            <div class="form-group">
+                                <select class="form-control" id="tone_curve">
+                                    <option>select option</option>
+                                </select>
+                            </div>
                     </div>
                 </div>
             </div>
