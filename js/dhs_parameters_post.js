@@ -47,6 +47,13 @@ const trigger = document.querySelector("#trigger")
 
 //tone curve
 const toneCurve = document.querySelector("#tone_curve")
+
+//fan
+const fan = document.querySelector("#fan")
+
+//light
+const light = document.querySelector("#light")
+
 // Width
 
 document.getElementById("width").addEventListener("change", () => {
@@ -224,6 +231,29 @@ toneCurve.addEventListener("change", () => {
         val = parseInt(val)
         var url = url_cam_tones
         document.getElementById("tone_curve").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
+//FAN
+fan.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = fan.checked
+        //console.log(val)
+        var url = url_cam_fan
+        document.getElementById("fan").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
+
+//LIGHT
+light.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = light.checked
+        console.log(val)
+        var url = url_cam_lights
+        document.getElementById("light").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
