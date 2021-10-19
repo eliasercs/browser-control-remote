@@ -341,3 +341,7 @@ body {
         opacity: 1;
     }
 }
+
+.subtitle {
+    font-family: "Poppins-Bold","sans-serif";
+}

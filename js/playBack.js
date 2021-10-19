@@ -154,7 +154,7 @@ async function move_seek_with_playbakButton(){
                 document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
                 seek("seek_to_frame",frame_index_input.value)
                 frame_time_input.value = frame_index_input.value
-                document.querySelector("#seek_time_value").innerHTML = frame_time_input.value/22000.0
+                document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value/22000.0).toFixed(6)
             })
             // Seek to frame by time
             frame_time_input.setAttribute("min",0)

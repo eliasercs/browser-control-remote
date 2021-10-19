@@ -153,16 +153,17 @@
                         </div>
                         <div class="range-slider">
                             <label>Seek to frame by time</label>
-                            <div id="seek_time_value" class="value"></div>
+                            <div id="seek_time_value" class="value" style="width: 60px;"></div>
                             <input id="seek_time" class="slider" type="range">
                         </div>
                     </div>
                 </div>
 
                 <div class="row interface">
+
                     <div class="col text-center">
                         <form>
-                            <p>IMAGE</p>
+                            <p class="subtitle text-center">IMAGE</p>
                             <div class="form-group">
                                 <label for="width">width</label>
                                 <input class="form-control slider" type="range" id="width">
@@ -186,33 +187,29 @@
                                 <input class="form-control slider" type="range" id="right">
                                 <input class="form-control" type="text" id="rightValue" readonly>
                             </div>
-
-                            <div class="form-group">
-                                <label for="depth">depth</label>
-                                <input class="form-control" type="text" id="depth" readonly>
-                            </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
                     <div class="col text-center">
                         <form>
-                            <p>CAPTURE</p>
+                            <p class="subtitle text-center">CAPTURE</p>
                             <div class="form-group">
                                 <label for="fps">fps</label>
-                                <input class="form-control" type="text" id="fps">
+                                <input class="form-control slider" type="range" id="fps">
+                                <input class="form-control" type="text" id="fps_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="exposure">exposure</label>
-                                <input class="form-control" type="text" id="exposure">
+                                <input class="form-control slider" type="range" id="exposure">
+                                <input class="form-control" type="text" id="exposure_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="gain_cap">gain</label>
-                                <input class="form-control" type="text" id="gain_cap">
+                                <input class="form-control slider" type="range" id="gain_cap">
+                                <input class="form-control" type="text" id="gain_cap_value" readonly>
                             </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -220,13 +217,13 @@
 
                 <div class="interface">
                     <form>
-                        <p class="text-center p-4">COLOR</p>
+                        <p class="subtitle text-center p-4">COLOR</p>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="red">red</label>
                                     <input class="form-control slider" type="range" id="red">
-                                    <input class="form-control" type="text" id="value_red">
+                                    <input class="form-control" type="text" id="value_red" readonly>
                                 </div>
         
                                 <div class="form-group">
@@ -270,8 +267,6 @@
                                     <input class="form-control slider" type="range" id="gamma">
                                     <input class="form-control" type="text" id="value_gamma" readonly>
                                 </div>
-        
-                                <input class="form-control" type="reset">
                             </div>
                         </div>
                     </form>
@@ -280,29 +275,39 @@
                 <div class="row interface">
                     <div class="col">
                         <form>
-                            <p>CAMERA</p>
-                            <label>SHUTTER</label><br>
-                            <select id="shutter">
-                                <option>Select option</option>
-                            </select>
+                            <p class="subtitle text-center">CAMERA</p>
+                            <div class="form-group">
+                                <label>SHUTTER</label><br>
+                                <select class="form-control" id="shutter">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
                             <br>
-                            <label>TRIGGER</label><br>
-                            <select id="trigger">
-                                <option>Select option</option>
-                            </select>
+                            <div class="form-group">
+                                <label>TRIGGER</label><br>
+                                <select class="form-control" id="trigger">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
                             <br>
                             <label>MISC</label><br>
-                            <input type="checkbox" id="fan" name="MISC">
-                            <label for="FAN">FAN</label>
-                            <input type="checkbox" id="light" name="MISC">
-                            <label for="LIGHTS">LIGHTS</label>
+                            <div class="form-group">
+                                <input type="checkbox" id="fan" name="MISC">
+                                <label for="FAN">FAN</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="light" name="MISC">
+                                <label for="LIGHTS">LIGHTS</label>
+                            </div>
                         </form>
                     </div>
                     <div class="col">
-                            <p>TONE CURVE</p>
-                            <select id="tone_curve">
-                                <option>select option</option>
-                            </select>
+                            <p class="subtitle text-center">TONE CURVE</p>
+                            <div class="form-group">
+                                <select class="form-control" id="tone_curve">
+                                    <option>select option</option>
+                                </select>
+                            </div>
                     </div>
                 </div>
             </div>
