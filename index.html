@@ -186,12 +186,6 @@
                                 <input class="form-control slider" type="range" id="right">
                                 <input class="form-control" type="text" id="rightValue" readonly>
                             </div>
-
-                            <div class="form-group">
-                                <label for="depth">depth</label>
-                                <input class="form-control" type="text" id="depth" readonly>
-                            </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -200,19 +194,21 @@
                             <p>CAPTURE</p>
                             <div class="form-group">
                                 <label for="fps">fps</label>
-                                <input class="form-control" type="text" id="fps">
+                                <input class="form-control slider" type="range" id="fps">
+                                <input class="form-control" type="text" id="fps_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="exposure">exposure</label>
-                                <input class="form-control" type="text" id="exposure">
+                                <input class="form-control slider" type="range" id="exposure">
+                                <input class="form-control" type="text" id="exposure_value" readonly>
                             </div>
     
                             <div class="form-group">
                                 <label for="gain_cap">gain</label>
-                                <input class="form-control" type="text" id="gain_cap">
+                                <input class="form-control slider" type="range" id="gain_cap">
+                                <input class="form-control" type="text" id="gain_cap_value" readonly>
                             </div>
-                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -226,7 +222,7 @@
                                 <div class="form-group">
                                     <label for="red">red</label>
                                     <input class="form-control slider" type="range" id="red">
-                                    <input class="form-control" type="text" id="value_red">
+                                    <input class="form-control" type="text" id="value_red" readonly>
                                 </div>
         
                                 <div class="form-group">
@@ -270,8 +266,6 @@
                                     <input class="form-control slider" type="range" id="gamma">
                                     <input class="form-control" type="text" id="value_gamma" readonly>
                                 </div>
-        
-                                <input class="form-control" type="reset">
                             </div>
                         </div>
                     </form>

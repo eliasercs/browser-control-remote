@@ -1,4 +1,4 @@
-if (document.getElementById("stations").value !== "default"){
+if (document.getElementById("stations").value !== "default") {
     var url_par_list = `system/${document.getElementById("stations").value}/dhs1/parlist`
     var url_width = `system/${document.getElementById("stations").value}/dhs1/par/width`
     var url_height = `system/${document.getElementById("stations").value}/dhs1/par/height`
@@ -23,21 +23,21 @@ if (document.getElementById("stations").value !== "default"){
     var url_cam_bref_del = `system/${document.getElementById("stations").value}/dhs1/par/cam-bref-del`
     var url_cam_reset_spooler = `system/${document.getElementById("stations").value}/dhs1/par/cam-reset-spooler`
     var url_cam_tones = `system/${document.getElementById("stations").value}/dhs1/par/cam-tones`
-
-    //capture
-    const fps = document.querySelector("#fps")
-    const exp = document.querySelector("#exposure")
-    const gain_cap = document.querySelector("#gain_cap")
-
-    //color
-    const red = document.querySelector("#red")
-    const blue = document.querySelector("#blue")
-    const imgbr = document.querySelector("#brightness")
-    const imgco = document.querySelector("#contrast")
-    const imgsat = document.querySelector("#saturation")
-    const imggain = document.querySelector("#gain_color")
-    const imggamma = document.querySelector("#gamma")
 }
+
+//capture
+const fps = document.querySelector("#fps")
+const exp = document.querySelector("#exposure")
+const gain_cap = document.querySelector("#gain_cap")
+
+//color
+const red = document.querySelector("#red")
+const blue = document.querySelector("#blue")
+const imgbr = document.querySelector("#brightness")
+const imgco = document.querySelector("#contrast")
+const imgsat = document.querySelector("#saturation")
+const imggain = document.querySelector("#gain_color")
+const imggamma = document.querySelector("#gamma")
 
 // Width
 
@@ -77,6 +77,7 @@ fps.addEventListener("change", () => {
         var val = fps.value
         val = parseFloat(val)
         var url = url_fps
+        document.getElementById("fps_value").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -87,6 +88,7 @@ exp.addEventListener("change", () => {
         var val = exp.value
         val = parseFloat(val)
         var url = url_exp
+        document.getElementById("exposure_value").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -97,6 +99,7 @@ gain_cap.addEventListener("change", () => {
         var val = gain_cap.value
         val = parseFloat(val)
         var url = url_gain
+        document.getElementById("gain_cap_value").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -111,6 +114,7 @@ red.addEventListener("change", () => {
         var val = red.value
         val = parseFloat(val)
         var url = url_wb_red
+        document.getElementById("value_red").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -121,6 +125,7 @@ blue.addEventListener("change", () => {
         var val = blue.value
         val = parseFloat(val)
         var url = url_wb_blue
+        document.getElementById("value_blue").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -131,6 +136,7 @@ imgbr.addEventListener("change", () => {
         var val = imgbr.value
         val = parseFloat(val)
         var url = url_imgbr
+        document.getElementById("value_brightness").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -141,6 +147,7 @@ imgco.addEventListener("change", () => {
         var val = imgco.value
         val = parseFloat(val)
         var url = url_imgco
+        document.getElementById("value_contrast").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
@@ -151,6 +158,29 @@ imgsat.addEventListener("change", () => {
         var val = imgsat.value
         val = parseFloat(val)
         var url = url_imgsat
+        document.getElementById("value_saturation").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
+
+imggain.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = imggain.value
+        val = parseFloat(val)
+        var url = url_imggain
+        document.getElementById("value_gain").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
+
+imggamma.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = imggamma.value
+        val = parseFloat(val)
+        var url = url_imggamma
+        document.getElementById("value_gamma").value = val
         fetch_post_params(url, val)
     }
     //console.log(val)
