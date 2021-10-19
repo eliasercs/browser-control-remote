@@ -46,7 +46,7 @@ const shutter=document.querySelector("#shutter")
 const trigger = document.querySelector("#trigger")
 
 //tone curve
-const toneCurve = document.querySelector("#tone_Curve")
+const toneCurve = document.querySelector("#tone_curve")
 // Width
 
 document.getElementById("width").addEventListener("change", () => {
@@ -221,7 +221,7 @@ trigger.addEventListener("change", () => {
 toneCurve.addEventListener("change", () => {
     if (document.getElementById("stations").value !== "default") {
         var val = toneCurve.value
-        val = parseFloat(val)
+        val = parseInt(val)
         var url = url_cam_tones
         document.getElementById("tone_curve").value = val
         fetch_post_params(url, val)
