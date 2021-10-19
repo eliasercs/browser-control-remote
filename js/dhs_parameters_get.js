@@ -342,7 +342,7 @@ fetch(url_cam_fan)
     //console.log(data)
     let element1=document.getElementById('FAN')
     element1.value=data.value
-    console.log(element1.value)
+    //console.log(element1.value)
 })
 .catch(err => console.log(err))
 
@@ -353,7 +353,7 @@ fetch(url_cam_lights)
     //console.log(data)
     let element1=document.getElementById('LIGHTS')
     element1.value=data.value
-    console.log(element1.value)
+    //console.log(element1.value)
 })
 .catch(err => console.log(err))
 
@@ -366,7 +366,7 @@ fetch(url_cam_tones)
         var option=document.createElement("option")
         option.value=key
         option.text=item
-        document.getElementById("tone_curves").appendChild(option)
+        document.getElementById("tone_curve").appendChild(option)
         //console.log(option.value)
         //console.log(option.text)
     })

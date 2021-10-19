@@ -39,6 +39,14 @@ const imgsat = document.querySelector("#saturation")
 const imggain = document.querySelector("#gain_color")
 const imggamma = document.querySelector("#gamma")
 
+//shutter
+const shutter=document.querySelector("#shutter")
+
+//trigger
+const trigger = document.querySelector("#trigger")
+
+//tone curve
+const toneCurve = document.querySelector("#tone_Curve")
 // Width
 
 document.getElementById("width").addEventListener("change", () => {
@@ -68,8 +76,7 @@ document.getElementById("right").addEventListener("change", () => {
 
 
 
-//shutter
-//const shutter=document.querySelector("#shutter")
+
 
 //CAPTURE
 fps.addEventListener("change", () => {
@@ -186,16 +193,41 @@ imggamma.addEventListener("change", () => {
     //console.log(val)
 })
 
-//SHUTTER  pendiente
-/*document.querySelector("#shutter").addEventListener("change", ()=>{
-        var val=0
-        val=parseInt(val)
-        var val=shutter[1].value
-        var val=shutter[2].value
-    console.log(val)
-})*/
+//SHUTTER
+shutter.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = shutter.value
+        val = parseFloat(val)
+        var url = url_cam_shutter
+        document.getElementById("tone_curves").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
 
+//TRIGGER
+trigger.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = trigger.value
+        val = parseFloat(val)
+        var url = url_cam_trigger
+        document.getElementById("trigger").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
 
+//TONES CURVE
+toneCurve.addEventListener("change", () => {
+    if (document.getElementById("stations").value !== "default") {
+        var val = toneCurve.value
+        val = parseFloat(val)
+        var url = url_cam_tones
+        document.getElementById("tone_curve").value = val
+        fetch_post_params(url, val)
+    }
+    //console.log(val)
+})
 
 //fetch post
 function fetch_post_params(url, val) {
