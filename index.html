@@ -186,6 +186,12 @@
                                 <input class="form-control slider" type="range" id="right">
                                 <input class="form-control" type="text" id="rightValue" readonly>
                             </div>
+
+                            <div class="form-group">
+                                <label for="depth">depth</label>
+                                <input class="form-control" type="text" id="depth" readonly>
+                            </div>
+                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -194,21 +200,19 @@
                             <p>CAPTURE</p>
                             <div class="form-group">
                                 <label for="fps">fps</label>
-                                <input class="form-control slider" type="range" id="fps">
-                                <input class="form-control" type="text" id="fps_value" readonly>
+                                <input class="form-control" type="text" id="fps">
                             </div>
     
                             <div class="form-group">
                                 <label for="exposure">exposure</label>
-                                <input class="form-control slider" type="range" id="exposure">
-                                <input class="form-control" type="text" id="exposure_value" readonly>
+                                <input class="form-control" type="text" id="exposure">
                             </div>
     
                             <div class="form-group">
                                 <label for="gain_cap">gain</label>
-                                <input class="form-control slider" type="range" id="gain_cap">
-                                <input class="form-control" type="text" id="gain_cap_value" readonly>
+                                <input class="form-control" type="text" id="gain_cap">
                             </div>
+                            <input class="form-control" type="reset">
                         </form>
                     </div>
 
@@ -222,7 +226,7 @@
                                 <div class="form-group">
                                     <label for="red">red</label>
                                     <input class="form-control slider" type="range" id="red">
-                                    <input class="form-control" type="text" id="value_red" readonly>
+                                    <input class="form-control" type="text" id="value_red">
                                 </div>
         
                                 <div class="form-group">
@@ -266,6 +270,8 @@
                                     <input class="form-control slider" type="range" id="gamma">
                                     <input class="form-control" type="text" id="value_gamma" readonly>
                                 </div>
+        
+                                <input class="form-control" type="reset">
                             </div>
                         </div>
                     </form>
@@ -276,65 +282,27 @@
                         <form>
                             <p>CAMERA</p>
                             <label>SHUTTER</label><br>
-                            <input type="radio" id="ROLLING" name="shutter" checked>
-                            <label for="ROLLING">ROLLING</label>
-                            <input type="radio" id="GLOBAL" name="shutter">
-                            <label for="GLOBAL">GLOBAL</label>
-                            <input type="radio" id="BRIGHT" name="shutter">
-                            <label for="BRIGHT">BRIGHT F.</label>
+                            <select id="shutter">
+                                <option>Select option</option>
+                            </select>
                             <br>
                             <label>TRIGGER</label><br>
-                            <input type="radio" id="INTERNAL" name="trigger" checked>
-                            <label for="INTERNAL">INTERNAL</label>
-                            <input type="radio" id="GPIO0" name="trigger">
-                            <label for="GPIO0">GPIO0</label>
-                            <input type="radio" id="GPIO1" name="trigger">
-                            <label for="GPIO1">GPIO1</label>
-                            <input type="radio" id="GPIO2" name="trigger">
-                            <label for="GPIO2">GPIO</label>
-                            <input type="radio" id="GPIO3" name="trigger">
-                            <label for="GPIO3">GPIO3</label>
+                            <select id="trigger">
+                                <option>Select option</option>
+                            </select>
                             <br>
                             <label>MISC</label><br>
-                            <input type="radio" id="FAN" name="MISC" checked>
+                            <input type="checkbox" id="FAN" name="MISC">
                             <label for="FAN">FAN</label>
-                            <input type="radio" id="LIGHTS" name="MISC">
+                            <input type="checkbox" id="LIGHTS" name="MISC">
                             <label for="LIGHTS">LIGHTS</label>
-                            <input type="radio" id="RESET TIME" name="MISC">
-                            <label for="RESET TIME">RESET TIME</label>
-                            <br>
-                            <label>BLACK REFERENCE</label><br>
-                            <input type="radio" id="ADD" name="black_reference" checked>
-                            <label for="ADD">ADD</label>
-                            <input type="radio" id="DEL" name="black_reference">
-                            <label for="DEL">DEL</label>
-                            <br>
-                            <label>default</label>
-                            <input type="reset" id="RESET ALL">
-                            <label>STORANGE</label>
-                            <input type="reset" id="RESET SPOOLER">
                         </form>
                     </div>
                     <div class="col">
-                        <form id="tone_curves">
                             <p>TONE CURVES</p>
-                            <input type="radio" id="1.00" name="TONE CURVES" checked>
-                            <label for="1.00">1.00</label>
-                            <input type="radio" id="1.25" name="TONE CURVES">
-                            <label for="1.25">1.25</label>
-                            <input type="radio" id="1.60" name="TONE CURVES">
-                            <label for="1.60">1.60</label>
-                            <input type="radio" id="2.00" name="TONE CURVES">
-                            <label for="2.00">2.00</label>
-                            <input type="radio" id="2.50" name="TONE CURVES">
-                            <label for="2.50">2.50</label>
-                            <input type="radio" id="3.20" name="TONE CURVES">
-                            <label for="3.20">3.20</label>
-                            <input type="radio" id="4.00" name="TONE CURVES">
-                            <label for="4.00">4.00</label>
-                            <input type="radio" id="5.00" name="TONE CURVES">
-                            <label for="5.00">5.00</label>
-                        </form>
+                            <select id="tone_curves">
+                                <option>select option</option>
+                            </select>
                     </div>
                 </div>
             </div>
