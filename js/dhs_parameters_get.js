@@ -307,13 +307,14 @@ fetch(url_imggamma)
 fetch(url_cam_shutter)
 .then(res=>res.json())
 .then(data=>{
-    //console.log(data)
-    let element1=document.getElementById('ROLLING')
-    element1.value=data.opt[0]
-    let element2=document.getElementById('GLOBAL')
-    element2.value=data.opt[1]
-    let element3=document.getElementById('BRIGHT')
-    element3.value=data.opt[2]
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("shutter").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
 })
 .catch(err => console.log(err))
 
@@ -321,21 +322,32 @@ fetch(url_cam_shutter)
 fetch(url_cam_trigger)
 .then(res=>res.json())
 .then(data=>{
-    //console.log(data)
-    let element1=document.getElementById('INTERNAL')
-    element1.value=data.opt[0]
-    let element2=document.getElementById('GPIO0')
-    element2.value=data.opt[1]
-    let element3=document.getElementById('GPIO1')
-    element3.value=data.opt[2]
-    let element4=document.getElementById('GPIO2')
-    element4.value=data.opt[3]
-    let element5=document.getElementById('GPIO3')
-    element5.value=data.opt[4]
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("trigger").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
 })
 .catch(err => console.log(err))
 
 //MISC
+
+fetch(url_cam_trigger)
+.then(res=>res.json())
+.then(data=>{
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("trigger").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
+})
+.catch(err => console.log(err))
 
 //fan
 fetch(url_cam_fan)
