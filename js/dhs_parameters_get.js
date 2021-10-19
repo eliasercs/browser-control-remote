@@ -199,6 +199,7 @@ fetch(url_imggain)
 
 //gamma
 fetch(url_imggamma)
+<<<<<<< HEAD
     .then(res => res.json())
     .then(data => {
         document.getElementById('gamma').setAttribute("min", data.range.lo)
@@ -208,8 +209,92 @@ fetch(url_imggamma)
         document.getElementById("value_gamma").value = data.value
     })
     .catch(err => console.log(err))
+=======
+.then(res=>res.json())
+.then(data=>{
+    //console.log(data)
+    //falta obtener el min y el max
+    //min=data.range.lo
+    document.getElementById('gamma').setAttribute("min",0)
+    document.getElementById('gamma').setAttribute("max",1)
+    document.getElementById('gamma').setAttribute("step",0.01)
+})
+.catch(err => console.log(err))
 
 
+fetch(url_imggamma)
+.then(res=>res.json())
+.then(data=>{
+    //console.log(data)
+    var slider=document.getElementById("gamma")
+    var output=document.getElementById("value_gamma")
+    output.innerHTML=slider.value
+    slider.oninput=function(){
+        output.setAttribute("value",this.value)
+    }
+})
+.catch(err => console.log(err))
+
+// camera
+
+//shutter
+fetch(url_cam_shutter)
+.then(res=>res.json())
+.then(data=>{
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("shutter").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
+})
+.catch(err => console.log(err))
+
+//trigger
+fetch(url_cam_trigger)
+.then(res=>res.json())
+.then(data=>{
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("trigger").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
+})
+.catch(err => console.log(err))
+>>>>>>> develop2
+
+
+<<<<<<< HEAD
+=======
+fetch(url_cam_trigger)
+.then(res=>res.json())
+.then(data=>{
+    data.opt.map((item,key)=>{
+        var option=document.createElement("option")
+        option.value=key
+        option.text=item
+        document.getElementById("trigger").appendChild(option)
+        //console.log(option.value)
+        //console.log(option.text)
+    })
+})
+.catch(err => console.log(err))
+
+//fan
+fetch(url_cam_fan)
+.then(res=>res.json())
+.then(data=>{
+    //console.log(data)
+    let element1=document.getElementById('FAN')
+    element1.value=data.value
+})
+.catch(err => console.log(err))
+>>>>>>> develop2
 
 
 
