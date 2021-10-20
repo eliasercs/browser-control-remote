@@ -5,107 +5,325 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>SPICAtek / Remote Control</title>
     <link rel="shortcut icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/app.css">
+    <!--Scripts-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar" id="navBar">
-            <img src="./assets/spica-logo.png" class="image-fluid" alt="..." width="200" height="100">
-            <a class="navbar-brand" translate="no">Browser Remote Control </a>
-            <button class="btn-terminate my-2 my-sm-0" id="terminate" cmd="terminate">Terminate</button>
-        </nav>
-    </header>
-    <br />
+    <div class="navigation">
+        <ul>
+            <p id="deviceModeSubtitle" class="hide">Device Mode</p>
+            <li class="list">
+                <button id="setup" cmd="mode" par="setup">
+                    <span class="icon">
+                        <ion-icon name="disc"></ion-icon>
+                    </span>
+                    <span class="title">Setup</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="record" cmd="mode" par="record">
+                    <span class="icon">
+                        <ion-icon name="videocam"></ion-icon>
+                    </span>
+                    <span class="title">Record</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="playback" cmd="mode" par="playback">
+                    <span class="icon">
+                        <ion-icon name="play-circle"></ion-icon>
+                    </span>
+                    <span class="title">Playback</span>
+                </button>
+            </li>
+        </ul>
+        <ul>
+            <p id="playbackSubtitle" class="hide">Playback Buttons</p>
+            <li class="list">
+                <button id="play" cmd="play" par="">
+                    <span class="icon">
+                        <ion-icon name="play"></ion-icon>
+                    </span>
+                    <span class="title">Play</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="stop" cmd="stop" par="">
+                    <span class="icon">
+                        <ion-icon name="stop"></ion-icon>
+                    </span>
+                    <span class="title">Stop</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="first" cmd="first" par="">
+                    <span class="icon">
+                        <ion-icon name="play-back"></ion-icon>
+                    </span>
+                    <span class="title">First</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="last" cmd="last" par="">
+                    <span class="icon">
+                        <ion-icon name="play-forward"></ion-icon>
+                    </span>
+                    <span class="title">Last</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="prev" cmd="prev" par="">
+                    <span class="icon">
+                        <ion-icon name="play-skip-back"></ion-icon>
+                    </span>
+                    <span class="title">Prev</span>
+                </button>
+            </li>
+            <li class="list">
+                <button id="next" cmd="next" par="">
+                    <span class="icon">
+                        <ion-icon name="play-skip-forward"></ion-icon>
+                    </span>
+                    <span class="title">Next</span>
+                </button>
+            </li>
+        </ul>
+    </div>
 
-    <div class="container">
-        <div class="row p-4">
-            <div class="col-md-4">
-                <div class="text-center">
-                    <p>Device Mode</p>
-                    <div class="form-group">
-                        <button class="btn-device deviceButton" id="setup" cmd="mode" par="setup">Setup</button>
+    <div class="body">
+        <div class="navBar">
+            <!--
+            <div class="theme element">
+                <input type="checkbox">
+            </div>
+            -->
+
+            <div class="off element">
+                <button id="terminate">
+                    <ion-icon name="power"></ion-icon>
+                </button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container p-3">
+
+                <div class="setStation text-center">
+                    <select id="stations" class="form-control">
+                        <option value="default">Select a station</option>
+                    </select>
+                    <div class="alert alert-danger" id="alertMessage" role="alert">You must select a station.</div>
+                </div>
+
+                <div class="row interface">
+                    <div class="col text-center">
+                        <img id="frameImage" class="img-fluid" alt="Frame" />
                     </div>
-                    <div class="form-group">
-                        <button class="btn-device deviceButton" id="record" cmd="mode" par="record">Record</button>
+                </div>
+
+                <div class="row interface">
+                    <div class="col p-3">
+                        <table class="table text-white text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Command</th>
+                                    <th scope="col">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody id="infostate"></tbody>
+                        </table>
+                        <button id="infoButton" class="btn btn-success">Get Status Information</button>
                     </div>
-                    <div class="form-group">
-                        <button class="btn-device deviceButton" id="playback" cmd="mode"
-                            par="playback">Playback</button>
+                    <div class="col p-3">
+                        <h5 class="card-title text-center text-white">Frame Manipulation</h5>
+                        <div class="range-slider">
+                            <label>Seek to normalize</label>
+                            <div id="normalice_value" class="value"></div>
+                            <input id="normalice" class="slider" type="range" min="0" , max="1000" value="0">
+                        </div>
+                        <div class="range-slider">
+                            <label>Seek to frame by index</label>
+                            <div id="seek_by_index_value" class="value"></div>
+                            <input id="seek_by_index" class="slider" type="range">
+                        </div>
+                        <div class="range-slider">
+                            <label>Seek to frame by time</label>
+                            <div id="seek_time_value" class="value" style="width: 60px;"></div>
+                            <input id="seek_time" class="slider" type="range">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row interface">
+
+                    <div class="col text-center">
+                        <form>
+                            <p class="subtitle text-center">IMAGE</p>
+                            <div class="form-group">
+                                <label for="width">width</label>
+                                <input class="form-control slider" type="range" id="width">
+                                <input class="form-control" type="text" id="widthValue" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="height">height</label>
+                                <input class="form-control slider" type="range" id="height">
+                                <input class="form-control" type="text" id="heightValue" readonly>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="left">left</label>
+                                <input class="form-control slider" type="range" id="left">
+                                <input class="form-control" type="text" id="leftValue" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="top">right</label>
+                                <input class="form-control slider" type="range" id="right">
+                                <input class="form-control" type="text" id="rightValue" readonly>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col text-center">
+                        <form>
+                            <p class="subtitle text-center">CAPTURE</p>
+                            <div class="form-group">
+                                <label for="fps">fps</label>
+                                <input class="form-control slider" type="range" id="fps">
+                                <input class="form-control" type="text" id="fps_value" readonly>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="exposure">exposure</label>
+                                <input class="form-control slider" type="range" id="exposure">
+                                <input class="form-control" type="text" id="exposure_value" readonly>
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="gain_cap">gain</label>
+                                <input class="form-control slider" type="range" id="gain_cap">
+                                <input class="form-control" type="text" id="gain_cap_value" readonly>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="interface">
+                    <form>
+                        <p class="subtitle text-center p-4">COLOR</p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="red">red</label>
+                                    <input class="form-control slider" type="range" id="red">
+                                    <input class="form-control" type="text" id="value_red" readonly>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="blue">blue</label>
+                                    <input class="form-control slider" type="range" id="blue">
+                                    <input class="form-control" type="text" id="value_blue" readonly>
+                                </div>
+                            </div>
+    
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="brightness">brightness</label>
+                                    <input class="form-control slider" type="range" id="brightness">
+                                    <input class="form-control" type="text" id="value_brightness" readonly>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="contrast">contrast</label>
+                                    <input class="form-control slider" type="range" id="contrast">
+                                    <input class="form-control" type="text" id="value_contrast" readonly>
+                                </div>
+                            </div>
+    
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="saturation">saturation</label>
+                                    <input class="form-control slider" type="range" id="saturation">
+                                    <input class="form-control" type="text" id="value_saturation" readonly>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="gain_color">gain</label>
+                                    <input class="form-control slider" type="range" id="gain_color">
+                                    <input class="form-control" type="text" id="value_gain" readonly>
+                                </div>
+                            </div>
+    
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="gamma">gamma</label>
+                                    <input class="form-control slider" type="range" id="gamma">
+                                    <input class="form-control" type="text" id="value_gamma" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row interface">
+                    <div class="col">
+                        <form>
+                            <p class="subtitle text-center">CAMERA</p>
+                            <div class="form-group">
+                                <label>SHUTTER</label><br>
+                                <select class="form-control" id="shutter">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>TRIGGER</label><br>
+                                <select class="form-control" id="trigger">
+                                    <option>Select option</option>
+                                </select>
+                            </div>
+                            <br>
+                            <label>MISC</label><br>
+                            <div class="form-group">
+                                <input type="checkbox" id="fan" name="MISC">
+                                <label for="FAN">FAN</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" id="light" name="MISC">
+                                <label for="LIGHTS">LIGHTS</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                            <p class="subtitle text-center">TONE CURVE</p>
+                            <div class="form-group">
+                                <select class="form-control" id="tone_curve">
+                                    <option>select option</option>
+                                </select>
+                            </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="infoState">
-                    <div class="card text-white bg-primary mb-3" style="max-width: 30rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Status Information</h5>
-                            <p class="card-text" id="infostate"></p>
-                        </div>
-                        <div class="card-header">
-                            <button class="btn btn-success my-2 my-sm-0" id="info" cmd="info" par="">Request status information</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <br />
-    <div class="container p-3">
-        <p class="text-center">PlayBack</p>
-        <div class="row justify-content-around">
-            <div class="col-md-2 offset-1">
-                <button class="btn-playback" id="first" cmd="first" par="">First</button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn-playback" id="prev" cmd="prev" par="">Prev</button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn-playback" id="next" cmd="next" par="">Next</button>
-            </div>
-            <div class="col-md-2">
-                <button class="btn-playback" id="last" cmd="last" par="">Last</button>
-            </div>
-
-        </div>
-    </div>
-    <div class="container p-3">
-        <div class="row justify-content-around">
-            <div class="col-md-3 offset-1">
-                <button class="btn-playback" id="play" cmd="play" par="">Play</button>
-            </div>
-            <div class="col-md-3 offset-1">
-                <button class="btn-playback" id="stop" cmd="stop" par="">Stop</button>
-            </div>
-        </div>
-        <div class="row p-4">
-            <div class="col-md-12 text-center">
-                <label for="video" class="form-label">Seek to normalized value</label>
-                <input type="range" class="form-range" min="0" max="1000" id="seek_norm">
-                <label for="value" id="value"></label>
-            </div>
-            <div class="col-md-12 text-center">
-                <label for="video" class="form-label">Seek to frame by index</label>
-                <input type="range" class="form-range" min="0" max="7500" id="frame_index">
-                <label for="value" id="seek_frame_index"></label>
-            </div>
-            <div class="col-md-12 text-center">
-                <label for="video" class="form-label">Seek to frame by time</label>
-                <input type="range" class="form-range" min="0" max="7500" id="frame_time">
-                <label for="value" id="seek_frame_time"></label>
-            </div>
-        </div>
-    </div>
-
-    <script src="./js/info.js"></script>
-    <script src="./js/terminate.js"></script>
+    <script src="./js/frontend.js"></script>
+    <script src="./js/fetch.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./js/devicemodes.js"></script>
     <script src="./js/playBack.js"></script>
+    <script src="./js/info.js"></script>
     <script src="./js/seek.js"></script>
+    <script src="./js/image.js"></script>
+    <script src="./js/dhs_parameters_get.js"></script>
+    <script src="./js/dhs_parameters_post.js"></script>
 
 </body>
 

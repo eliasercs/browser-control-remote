@@ -1,4 +1,4 @@
-# Browser Remote Control v1.0
+# Browser Remote Control v2.0
 
 ### Contribuidores:
 * Nicolás Arzola
