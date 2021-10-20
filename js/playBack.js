@@ -95,6 +95,15 @@ seek_norm_input.addEventListener("change", () => {
         var pixelesTime = document.querySelector("#seek_time").value/document.querySelector("#seek_time").getAttribute("max")
         document.querySelector("#seek_time_value").style.left = (pixelesTime*92.5)+"%"
         document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
+
+        infoimg()
+        .then(res => res.blob())
+        .then(data => {
+            var file = new File([data], "file.jpeg")
+            var urlCreator = window.URL || window.webkitURL
+            document.querySelector("#frameImage").setAttribute("src", urlCreator.createObjectURL(file))
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 })

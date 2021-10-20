@@ -68,7 +68,7 @@ document.querySelector("#stations").addEventListener("change", () => {
                     var pixelesIndex = document.querySelector("#seek_by_index").value / document.querySelector("#seek_by_index").getAttribute("max")
                     document.querySelector("#seek_by_index_value").style.left = (pixelesIndex * 92.5) + "%"
                     document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
-                    frame_index_input.addEventListener("input", async () => {
+                    frame_index_input.addEventListener("change", async () => {
                         document.querySelector("#seek_by_index_value").innerHTML = frame_index_input.value
                         seek("seek_to_frame", frame_index_input.value)
                         frame_time_input.value = frame_index_input.value
@@ -82,7 +82,7 @@ document.querySelector("#stations").addEventListener("change", () => {
                     var pixelesTime = document.querySelector("#seek_time").value / document.querySelector("#seek_time").getAttribute("max")
                     document.querySelector("#seek_time_value").style.left = (pixelesTime * 92.5) + "%"
                     document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
-                    frame_time_input.addEventListener("input", async () => {
+                    frame_time_input.addEventListener("change", async () => {
                         document.querySelector("#seek_time_value").innerHTML = (frame_time_input.value / 22000.0).toFixed(6)
                         seek("seek_to_time", frame_time_input.value / 22000.0)
                         frame_index_input.value = frame_time_input.value
