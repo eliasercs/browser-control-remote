@@ -269,7 +269,7 @@ document.querySelector("#stations").addEventListener("input", () => {
         .then(res => res.json())
         .then(data => {
             //console.log(data)
-            let element1 = document.getElementById('FAN')
+            let element1 = document.getElementById('fan')
             element1.value = data.value
             //console.log(element1.value)
         })
@@ -280,7 +280,7 @@ document.querySelector("#stations").addEventListener("input", () => {
         .then(res => res.json())
         .then(data => {
             //console.log(data)
-            let element1 = document.getElementById('LIGHTS')
+            let element1 = document.getElementById('light')
             element1.value = data.value
             //console.log(element1.value)
         })

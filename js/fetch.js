@@ -43,7 +43,13 @@ async function info() {
 }
 
 async function infoimg() {
-    const response = await fetch(`/system/${document.querySelector("#stations").value}/dhs1/image?overlay`, {
+    let element=document.getElementById("onoverlay")
+    var bol=element.checked
+    if (bol)
+        url=`/system/${document.querySelector("#stations").value}/dhs1/image?overlay`
+    if(!bol)
+        url=`/system/${document.querySelector("#stations").value}/dhs1/image`
+    const response = await fetch(url, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
