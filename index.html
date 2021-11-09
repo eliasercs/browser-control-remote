@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./css/sidebar_r.css">
     <!--Scripts-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -95,14 +96,177 @@
             </li>
         </ul>
     </div>
-
+    
+    <!-- side bar right-->
+    <div class="navigation2">
+        <ul>
+            <p id="frame_manipulation"  class="subtitle text-center p-4" class="hide">FRAME MANIPULATION</p>
+            <li class="list">
+                <div  class="range-slider" >
+                    <label>Seek to normalize</label>
+                    <div id="normalice_value" class="value"></div>
+                    <input id="normalice" class="slider" type="range" min="0" , max="1000" value="0">
+                </div>
+            </li>
+            <li class="list" class="hide">
+                <div class="range-slider">
+                    <label>Seek to frame by index</label>
+                    <div id="seek_by_index_value" class="value"></div>
+                    <input id="seek_by_index" class="slider" type="range">
+                </div>
+            </li>
+            <li class="list" class="hide">
+                <div class="range-slider">
+                    <label>Seek to frame by time</label>
+                    <div id="seek_time_value" class="value" style="width: 60px;"></div>
+                    <input id="seek_time" class="slider" type="range">
+                </div>
+            </li>
+            <p id="image"  class="subtitle text-center p-4" class="hide">IMAGE</p>
+            <li class="list">
+                <div class="form-group">
+                    <label for="width">width</label>
+                    <input class="form-control slider" type="range" id="width">
+                    <input class="form-control" type="text" id="widthValue" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="height">height</label>
+                    <input class="form-control slider" type="range" id="height">
+                    <input class="form-control" type="text" id="heightValue" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="left">left</label>
+                    <input class="form-control slider" type="range" id="left">
+                    <input class="form-control" type="text" id="leftValue" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="top">right</label>
+                    <input class="form-control slider" type="range" id="right">
+                    <input class="form-control" type="text" id="rightValue" readonly>
+                </div>
+            </li>
+            <p id="capture" class="subtitle text-center p-4" class="hide">CAPTURE</p>
+            <li class="list">
+                <div class="form-group">
+                    <label for="fps">fps</label>
+                    <input class="form-control slider" type="range" id="fps">
+                    <input class="form-control" type="text" id="fps_value" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="exposure">exposure</label>
+                    <input class="form-control slider" type="range" id="exposure">
+                    <input class="form-control" type="text" id="exposure_value" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="gain_cap">gain</label>
+                    <input class="form-control slider" type="range" id="gain_cap">
+                    <input class="form-control" type="text" id="gain_cap_value" readonly>
+                </div>
+            </li>
+            <p id="color" class="subtitle text-center p-4" class="hide">COLOR</p>
+            <li class="list">    
+                <div class="form-group">
+                    <label for="red">red</label>
+                    <input class="form-control slider" type="range" id="red">
+                    <input class="form-control" type="text" id="value_red" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="blue">blue</label>
+                    <input class="form-control slider" type="range" id="blue">
+                    <input class="form-control" type="text" id="value_blue" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="brightness">brightness</label>
+                    <input class="form-control slider" type="range" id="brightness">
+                    <input class="form-control" type="text" id="value_brightness" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="contrast">contrast</label>
+                    <input class="form-control slider" type="range" id="contrast">
+                    <input class="form-control" type="text" id="value_contrast" readonly>
+                </div>  
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="saturation">saturation</label>
+                    <input class="form-control slider" type="range" id="saturation">
+                    <input class="form-control" type="text" id="value_saturation" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="gain_color">gain</label>
+                    <input class="form-control slider" type="range" id="gain_color">
+                    <input class="form-control" type="text" id="value_gain" readonly>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label for="gamma">gamma</label>
+                    <input class="form-control slider" type="range" id="gamma">
+                    <input class="form-control" type="text" id="value_gamma" readonly>
+                </div>
+            </li>
+            <p id="camera" class="subtitle text-center p-4" class="hide">CAMERA</p>
+            <li class="list">
+                <div class="form-group">
+                    <label>SHUTTER</label><br>
+                    <select class="form-control" id="shutter">
+                        <option>Select option</option>
+                    </select>
+                </div>
+            </li>
+            <li class="list">
+                <div class="form-group">
+                    <label>TRIGGER</label><br>
+                    <select class="form-control" id="trigger">
+                        <option>Select option</option>
+                    </select>
+                </div>
+            </li>
+            <li class="list">
+            <label>MISC</label><br>
+                <div class="form-group">
+                    <input type="checkbox" id="fan" name="MISC">
+                    <label for="fan">FAN</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="light" name="MISC">
+                    <label for="light">LIGHT</label>
+                </div>
+            </li>
+            <p id="tone_curve_title" class="subtitle text-center" class="hide">TONE CURVE</p>
+            <li class="list">
+                <div class="form-group">
+                    <select class="form-control" id="tone_curve">
+                        <option>select option</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </div>
+<!-- end  side bar right -->
     <div class="body">
         <div class="navBar">
-            <!--
+            
             <div class="theme element">
                 <input type="checkbox">
             </div>
-            -->
+            
 
             <div class="off element">
                 <button id="terminate">
@@ -110,7 +274,7 @@
                 </button>
             </div>
         </div>
-        <div class="content">
+        <div class="content" id="content">
             <div class="container p-3">
 
                 <div class="setStation text-center">
@@ -141,177 +305,7 @@
                         </table>
                         <button id="infoButton" class="btn btn-success">Get Status Information</button>
                     </div>
-                    <div class="col p-3">
-                        <h5 class="card-title text-center text-white">Frame Manipulation</h5>
-                        <div class="range-slider">
-                            <label>Seek to normalize</label>
-                            <div id="normalice_value" class="value"></div>
-                            <input id="normalice" class="slider" type="range" min="0" , max="1000" value="0">
-                        </div>
-                        <div class="range-slider">
-                            <label>Seek to frame by index</label>
-                            <div id="seek_by_index_value" class="value"></div>
-                            <input id="seek_by_index" class="slider" type="range">
-                        </div>
-                        <div class="range-slider">
-                            <label>Seek to frame by time</label>
-                            <div id="seek_time_value" class="value" style="width: 60px;"></div>
-                            <input id="seek_time" class="slider" type="range">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row interface">
-
-                    <div class="col text-center">
-                        <form>
-                            <p class="subtitle text-center">IMAGE</p>
-                            <div class="form-group">
-                                <label for="width">width</label>
-                                <input class="form-control slider" type="range" id="width">
-                                <input class="form-control" type="text" id="widthValue" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="height">height</label>
-                                <input class="form-control slider" type="range" id="height">
-                                <input class="form-control" type="text" id="heightValue" readonly>
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="left">left</label>
-                                <input class="form-control slider" type="range" id="left">
-                                <input class="form-control" type="text" id="leftValue" readonly>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="top">right</label>
-                                <input class="form-control slider" type="range" id="right">
-                                <input class="form-control" type="text" id="rightValue" readonly>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col text-center">
-                        <form>
-                            <p class="subtitle text-center">CAPTURE</p>
-                            <div class="form-group">
-                                <label for="fps">fps</label>
-                                <input class="form-control slider" type="range" id="fps">
-                                <input class="form-control" type="text" id="fps_value" readonly>
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="exposure">exposure</label>
-                                <input class="form-control slider" type="range" id="exposure">
-                                <input class="form-control" type="text" id="exposure_value" readonly>
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="gain_cap">gain</label>
-                                <input class="form-control slider" type="range" id="gain_cap">
-                                <input class="form-control" type="text" id="gain_cap_value" readonly>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-
-                <div class="interface">
-                    <form>
-                        <p class="subtitle text-center p-4">COLOR</p>
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="red">red</label>
-                                    <input class="form-control slider" type="range" id="red">
-                                    <input class="form-control" type="text" id="value_red" readonly>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="blue">blue</label>
-                                    <input class="form-control slider" type="range" id="blue">
-                                    <input class="form-control" type="text" id="value_blue" readonly>
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="brightness">brightness</label>
-                                    <input class="form-control slider" type="range" id="brightness">
-                                    <input class="form-control" type="text" id="value_brightness" readonly>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="contrast">contrast</label>
-                                    <input class="form-control slider" type="range" id="contrast">
-                                    <input class="form-control" type="text" id="value_contrast" readonly>
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="saturation">saturation</label>
-                                    <input class="form-control slider" type="range" id="saturation">
-                                    <input class="form-control" type="text" id="value_saturation" readonly>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="gain_color">gain</label>
-                                    <input class="form-control slider" type="range" id="gain_color">
-                                    <input class="form-control" type="text" id="value_gain" readonly>
-                                </div>
-                            </div>
-    
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="gamma">gamma</label>
-                                    <input class="form-control slider" type="range" id="gamma">
-                                    <input class="form-control" type="text" id="value_gamma" readonly>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="row interface">
-                    <div class="col">
-                        <form>
-                            <p class="subtitle text-center">CAMERA</p>
-                            <div class="form-group">
-                                <label>SHUTTER</label><br>
-                                <select class="form-control" id="shutter">
-                                    <option>Select option</option>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label>TRIGGER</label><br>
-                                <select class="form-control" id="trigger">
-                                    <option>Select option</option>
-                                </select>
-                            </div>
-                            <br>
-                            <label>MISC</label><br>
-                            <div class="form-group">
-                                <input type="checkbox" id="fan" name="MISC">
-                                <label for="fan">FAN</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" id="light" name="MISC">
-                                <label for="light">LIGHT</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col">
-                            <p class="subtitle text-center">TONE CURVE</p>
-                            <div class="form-group">
-                                <select class="form-control" id="tone_curve">
-                                    <option>select option</option>
-                                </select>
-                            </div>
-                    </div>
-                </div>
+                </div>    
             </div>
         </div>
     </div>
@@ -326,6 +320,7 @@
     <script src="./js/image.js"></script>
     <script src="./js/dhs_parameters_get.js"></script>
     <script src="./js/dhs_parameters_post.js"></script>
+    <script src="./js/sidebar_r.js"></script>
 
 </body>
 

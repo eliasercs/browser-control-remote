@@ -1,0 +1,30 @@
+//nav bar right
+const frame_manipulation = document.querySelector("#frame_manipulation")
+const image = document.querySelector("#image")
+const capture=document.querySelector("#capture")
+const color=document.querySelector("#color")
+const camera = document.querySelector("#camera")
+const tone_curve_title = document.querySelector("#tone_curve")
+const content=document.querySelector("#content")
+
+document.querySelector(".navigation2").addEventListener("mouseover", () => {
+    document.querySelector(".navigation2").classList.add("navigation2-hover")
+    frame_manipulation.classList.remove("hide")
+    image.classList.remove("hide")
+    capture.classList.remove("hide")
+    color.classList.remove("hide")
+    camera.classList.remove("hide")
+    tone_curve_title.classList.remove("hide")
+    content.classList.add("content_just")
+})
+
+document.querySelector(".navigation2").addEventListener("mouseout", () => {
+    document.querySelector(".navigation2").classList.remove("navigation2-hover")
+    frame_manipulation.classList.add("hide")
+    image.classList.add("hide")
+    capture.classList.add("hide")
+    color.classList.add("hide")
+    camera.classList.add("hide")
+    tone_curve_title.classList.add("hide")
+    content.classList.remove("content_just")
+})

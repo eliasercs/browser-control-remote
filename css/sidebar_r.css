@@ -1,0 +1,53 @@
+.navigation2 {
+    position: fixed;
+    max-height: 100vh;
+    width: 70px;
+    background: var(--buttons-navbar-bg);
+    box-shadow: -10px 0 0 0 #f5af19;
+    overflow: hidden;
+    transition: width 0.5s;
+    z-index: 2;
+    right: 0px;
+}
+
+.navigation2-hover {
+    margin-right:0px;
+    width: 300px;
+    overflow-y: auto;
+}
+.navigation2 ul {
+    position: relative;
+    top: 0;
+    right:0px;
+    width: 100%;
+    padding-left: 5px;
+    margin-right: 140px;
+}
+
+.navigation2 ul p {
+    width: 100%;
+    color: #fff;
+    font-family: "Poppins-Bold", sans-serif;
+    padding-top: 5px;
+    text-align: left;
+    transition: width 1.5s;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.navigation2 ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+}
+
+.navigation2 ul li label {
+    color: #fff;
+}
+.content_just{
+    margin-right: 300px;
+}

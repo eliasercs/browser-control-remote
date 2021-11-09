@@ -39,7 +39,7 @@ body {
 }
 
 .navigation:focus, .navigation:hover {
-    width: 300px;
+    width: 250px;
     transition: none;
 }
 
@@ -139,7 +139,8 @@ body {
 
 .body .navBar .element {
     display: flex;
-    padding: 10px;
+    padding: 0px;/*test*/
+    margin-right: 90px;
 }
 
 .body .off button {
@@ -168,6 +169,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-left: 60px;
+    margin-right: 60px;
 }
 
 /* GRID */
