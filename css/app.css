@@ -12,6 +12,7 @@
     --buttons-navbar-shadow: #f12711;
     --body-bg: black;
     --active-bg: #f12711;
+    --active-bg2: #91ff00;
     --active-bg-linear-gradient-webkit: -webkit-linear-gradient(to right, #f5af19, #f12711);
     --active-bg-linear-gradient: linear-gradient(to right, #f5af19, #f12711);
 }
@@ -183,7 +184,7 @@ body {
 
 /* CHECKBOX (DARK/LIGHT THEME) */
 
-.theme input[type="checkbox"] {
+ input[type="checkbox"] {
     position: relative;
     width: 80px;
     height: 40px;
@@ -194,11 +195,11 @@ body {
     box-shadow: inset 0 0 5px rgba(0,0,0,20);
 }
 
-.theme input:checked[type="checkbox"] {
-    background: var(--active-bg);
+ input:checked[type="checkbox"] {
+    background: var(--active-bg2);
 }
 
-.theme input[type="checkbox"]:before {
+ input[type="checkbox"]:before {
     content: "";
     position: absolute;
     width: 40px;
@@ -212,7 +213,7 @@ body {
     transition: 0.5s;
 }
 
-.theme input:checked[type="checkbox"]:before {
+ input:checked[type="checkbox"]:before {
     left: 40px;
 }
 
