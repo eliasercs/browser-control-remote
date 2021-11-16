@@ -1,6 +1,5 @@
 //nav bar right
 const nav2=document.querySelector(".navigation2")
-const frame_manipulation = document.querySelector("#frame_manipulation")
 const image = document.querySelector("#image")
 const capture=document.querySelector("#capture")
 const color=document.querySelector("#color")
@@ -13,7 +12,6 @@ check_bar_right.addEventListener("change",()=>{
     if (document.getElementById("stations").value !== "default") {
         if (check_bar_right.checked) {
             nav2.classList.remove("hide")
-            frame_manipulation.classList.remove("hide")
             image.classList.remove("hide")
             capture.classList.remove("hide")
             color.classList.remove("hide")
@@ -24,7 +22,6 @@ check_bar_right.addEventListener("change",()=>{
             check_bar_right.classList.add("check_bar_right_just")
         } else {
             nav2.classList.add("hide")
-            frame_manipulation.classList.add("hide")
             image.classList.add("hide")
             capture.classList.add("hide")
             color.classList.add("hide")
